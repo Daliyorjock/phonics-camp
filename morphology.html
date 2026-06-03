@@ -2,186 +2,221 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="version" content="morph-v1.0">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>词根词缀训练营 · Morphology</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>DeepLingual · 词根词缀训练营</title>
 <style>
-:root { --p:#7c5ce7; --a:#00b894; --b:#fdcb6e; --d:#e17055; --t:#2d3436; --td:#636e72; --bg:#f8f9fa; --bg2:#fff; --bg3:#f1f0ff; }
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; background:var(--bg); color:var(--t); line-height:1.6; max-width:680px; margin:0 auto; padding:12px 16px 40px; }
-h1 { font-size:20px; margin:12px 0 4px; color:var(--t); }
-.sub { font-size:13px; color:var(--td); margin-bottom:16px; }
-.tabs { display:flex; gap:8px; margin-bottom:18px; flex-wrap:wrap; }
-.tab { padding:8px 18px; border-radius:20px; border:1.5px solid #ddd; background:var(--bg2); cursor:pointer; font-size:14px; font-weight:600; transition:all .2s; user-select:none; }
-.tab:hover { border-color:var(--p); color:var(--p); }
-.tab.active { background:var(--p); color:#fff; border-color:var(--p); }
-.tab .count { font-size:11px; opacity:.7; margin-left:3px; }
-.card { background:var(--bg2); border-radius:14px; margin-bottom:14px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.06); transition:box-shadow .2s; }
-.card:hover { box-shadow:0 2px 10px rgba(0,0,0,0.1); }
-.card-head { display:flex; align-items:center; gap:10px; padding:14px 16px; cursor:pointer; user-select:none; }
-.card-sym { font-size:22px; font-weight:800; color:var(--p); min-width:64px; }
-.card-meaning { font-size:14px; color:var(--t); font-weight:600; flex:1; }
-.card-desc { font-size:12px; color:var(--td); }
-.card-arrow { font-size:14px; color:var(--td); transition:transform .2s; display:inline-block; }
-.card.open .card-arrow { transform:rotate(90deg); }
-.card-body { display:none; padding:0 16px 14px; }
-.card.open .card-body { display:block; }
-.examples { margin-bottom:12px; }
-.ex-label { font-size:11px; color:var(--td); margin-bottom:6px; text-transform:uppercase; letter-spacing:1px; }
-.ex-item { display:flex; align-items:baseline; gap:8px; padding:6px 10px; margin-bottom:4px; background:var(--bg3); border-radius:8px; font-size:14px; }
-.ex-en { color:var(--t); font-weight:500; flex:1; }
-.ex-zh { color:var(--td); font-size:12px; }
-.ex-speak { cursor:pointer; font-size:14px; opacity:.6; transition:opacity .15s; flex-shrink:0; user-select:none; }
-.ex-speak:hover { opacity:1; }
-.words { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px; }
-.word-tag { background:rgba(124,92,231,.1); color:var(--p); padding:3px 10px; border-radius:12px; font-size:12px; font-weight:500; cursor:pointer; transition:background .15s; user-select:none; }
-.word-tag:hover { background:rgba(124,92,231,.2); }
-.quiz-btn { display:inline-flex; align-items:center; gap:5px; padding:8px 16px; background:var(--p); color:#fff; border:none; border-radius:20px; font-size:13px; font-weight:600; cursor:pointer; transition:opacity .15s; }
-.quiz-btn:hover { opacity:.85; }
-.back { display:inline-flex; align-items:center; gap:4px; color:var(--p); font-size:13px; text-decoration:none; margin-bottom:16px; font-weight:500; }
-.back:hover { text-decoration:underline; }
-.empty { text-align:center; padding:40px 20px; color:var(--td); font-size:14px; }
-footer { text-align:center; padding:30px 0 10px; font-size:11px; color:var(--td); }
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f5f2ff;color:#1e1e2e;min-height:100vh}
+.header{text-align:center;padding:24px 16px 16px;background:linear-gradient(135deg,#7c5ce7,#00b894);color:#fff}
+.header h1{font-size:22px;margin:0 0 4px;letter-spacing:1px}
+.header p{font-size:13px;opacity:.88;margin:0}
+.tab-bar{display:flex;gap:0;background:#fff;border-radius:14px;margin:16px 12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06);position:sticky;top:8px;z-index:10}
+.tab-btn{flex:1;border:0;padding:14px 8px;font-size:14px;font-weight:600;background:transparent;color:#888;cursor:pointer;transition:all .2s;border-bottom:3px solid transparent;text-align:center}
+.tab-btn.active{color:#7c5ce7;border-bottom-color:#7c5ce7}
+.tab-btn .tab-count{font-size:11px;color:#aaa;display:block;font-weight:400}
+.unit-wrap{padding:0 12px 16px;max-width:560px;margin:0 auto}
+.unit-card{background:#fff;border-radius:16px;padding:0;box-shadow:0 2px 12px rgba(0,0,0,.06);overflow:hidden;margin-bottom:12px;transition:all .2s}
+.unit-card.expanded{box-shadow:0 4px 20px rgba(124,92,231,.12)}
+.unit-head{display:flex;align-items:center;padding:14px 16px;cursor:pointer;gap:12px}
+.unit-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.unit-icon.prefix{background:#ede4ff;color:#7c5ce7}
+.unit-icon.suffix{background:#e0f7fa;color:#00897b}
+.unit-icon.root{background:#fff3e0;color:#e65100}
+.unit-main{flex:1;min-width:0}
+.unit-form{font-size:18px;font-weight:800;color:#333;letter-spacing:.5px}
+.unit-meaning{font-size:12px;color:#888;margin-top:2px}
+.unit-meta{font-size:11px;color:#bbb;margin-top:2px}
+.unit-arrow{font-size:18px;color:#ccc;transition:transform .25s;flex-shrink:0}
+.unit-card.expanded .unit-arrow{transform:rotate(180deg)}
+.unit-body{display:none;padding:0 16px 16px;border-top:1px solid #f0f0f0}
+.unit-card.expanded .unit-body{display:block}
+.unit-desc{font-size:13px;color:#555;padding:12px 0 8px;line-height:1.6}
+.unit-label{font-size:11px;font-weight:700;color:#aaa;text-transform:uppercase;margin:10px 0 6px;letter-spacing:.5px}
+.word-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px}
+.word-chip{display:inline-flex;align-items:center;gap:4px;padding:6px 10px;background:#f8f6ff;border-radius:18px;font-size:13px;font-weight:600;color:#7c5ce7;cursor:pointer;border:1px solid #eee;transition:all .15s}
+.word-chip:hover{background:#ede4ff;border-color:#c4b5fd}
+.word-chip .chip-speak{font-size:11px;opacity:.6}
+.ex-list{display:flex;flex-direction:column;gap:6px}
+.ex-item{display:flex;align-items:center;gap:8px;padding:8px 10px;background:#fafafa;border-radius:8px;font-size:12px}
+.ex-en{font-weight:600;color:#333;flex:1;line-height:1.5}
+.ex-zh{color:#999;font-size:11px;white-space:nowrap}
+.ex-speak{cursor:pointer;opacity:.5;font-size:14px;transition:opacity .15s;flex-shrink:0}
+.ex-speak:hover{opacity:1}
+.quiz-hint{font-size:11px;color:#bbb;text-align:center;padding:8px 0 2px;cursor:pointer}
+.unit-quiz{display:none;padding:8px 0}
+.unit-card.quizzing .unit-quiz{display:block}
+.unit-card.quizzing .ex-list,.unit-card.quizzing .word-chips,.unit-card.quizzing .unit-desc{display:none}
+.quiz-q{font-size:14px;font-weight:700;color:#555;margin-bottom:8px}
+.quiz-options{display:flex;flex-wrap:wrap;gap:6px}
+.quiz-opt{padding:8px 14px;border-radius:20px;border:2px solid #e0e0e0;background:#fff;font-size:13px;cursor:pointer;transition:all .2s;font-weight:600}
+.quiz-opt:hover{border-color:#7c5ce7;background:#f8f6ff}
+.quiz-opt.correct{border-color:#00b894;background:#e0fff5;color:#009a74}
+.quiz-opt.wrong{border-color:#e74c3c;background:#ffeaea;color:#c0392b}
+.quiz-fb{font-size:12px;font-weight:600;margin-top:6px;display:none}
+.quiz-fb.show{display:block}
+.quiz-fb.good{color:#00b894}
+.quiz-fb.bad{color:#e74c3c}
+.progress-bar{display:flex;align-items:center;gap:10px;padding:8px 16px;max-width:560px;margin:0 auto 8px}
+.progress-track{flex:1;height:6px;background:#e0e0e0;border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,#7c5ce7,#00b894);border-radius:3px;transition:width .4s}
+.progress-num{font-size:12px;font-weight:700;color:#888;min-width:42px;text-align:right}
+.back-link{display:block;text-align:center;padding:8px;font-size:12px;color:#aaa;text-decoration:none;margin-bottom:16px}
+.back-link:hover{color:#7c5ce7}
+.empty-msg{text-align:center;color:#bbb;padding:40px 16px;font-size:14px}
 </style>
 </head>
 <body>
-
-<a class="back" href="dot.html">← 回到拼读训练营</a>
+<div class="header">
 <h1>🧩 词根词缀训练营</h1>
-<p class="sub">拆词猜义 · 举一反三 · 建立英语思维逻辑</p>
-
-<div class="tabs" id="tabs">
-  <div class="tab active" onclick="switchTab('prefix')">🗂️ 前缀<span class="count">16</span></div>
-  <div class="tab" onclick="switchTab('suffix')">🔖 后缀<span class="count">16</span></div>
-  <div class="tab" onclick="switchTab('root')">🌳 词根<span class="count">10</span></div>
+<p>学词根，举一反三，词汇量翻倍</p>
 </div>
-
-<div id="cards"></div>
-
-<footer>词根词缀训练营 · Morphology Camp</footer>
-
+<div class="progress-bar">
+<div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+<div class="progress-num" id="progressNum">0/0</div>
+</div>
+<div class="tab-bar">
+<button class="tab-btn active" onclick="switchTab('prefix')">🔷 前缀<span class="tab-count"></span></button>
+<button class="tab-btn" onclick="switchTab('suffix')">🔰 后缀<span class="tab-count"></span></button>
+<button class="tab-btn" onclick="switchTab('root')">🧱 词根<span class="tab-count"></span></button>
+</div>
+<div class="unit-wrap" id="unitList"></div>
+<a class="back-link" href="index.html">← 回到拼读训练营</a>
+<script type="application/json" id="morphData">
+[{"id":"m_re","form":"re-","type":"prefix","meaning":"再次 / 重新 again","desc":"表示「再、重新」做某事","words":["redo","rewrite","return","review","recycle","rebuild"],"sentences":[["I need to redo my homework.","我需要重做作业。"],["Please rewrite this paragraph.","请重写这一段。"],["She will return the book.","她会还这本书。"]]},{"id":"m_un","form":"un-","type":"prefix","meaning":"不 / 相反 not","desc":"表示「不、反、没有」","words":["unhappy","unlock","unfair","unable","unzip","unfold"],"sentences":[["She felt unhappy about the news.","她对消息感到不快。"],["Can you unlock the door?","你能打开门锁吗？"],["The game seems unfair.","游戏似乎不公平。"]]},{"id":"m_dis","form":"dis-","type":"prefix","meaning":"不 / 分开 not/opposite","desc":"表示「不、分开、相反」","words":["disagree","dislike","disappear","discover","disconnect","dishonest"],"sentences":[["I disagree with that idea.","我不同意那个想法。"],["He dislikes spicy food.","他不喜欢辣的食物。"],["The sun will disappear soon.","太阳很快会消失。"]]},{"id":"m_pre","form":"pre-","type":"prefix","meaning":"在…之前 before","desc":"表示「在…之前」","words":["preview","preschool","preheat","prefix","prepare","predict"],"sentences":[["Watch the movie preview first.","先看影片预告。"],["She goes to preschool.","她上幼儿园。"],["Please preheat the oven.","请预热烤箱。"]]},{"id":"m_mis","form":"mis-","type":"prefix","meaning":"错误地 wrongly","desc":"表示「错误、不好地」","words":["misunderstand","misspell","mislead","misplace","misbehave","miscalculate"],"sentences":[["Don't misunderstand my words.","不要误解我的话。"],["You may misspell this word.","你可能会拼错这个词。"],["The ad can mislead buyers.","广告会误导买家。"]]},{"id":"m_trans","form":"trans-","type":"prefix","meaning":"跨越 / 转移 across","desc":"表示「跨越、转移、变化」","words":["transport","translate","transform","transfer","transparent","transaction"],"sentences":[["We need to transport the goods.","我们需要运输货物。"],["Can you translate this sentence?","你能翻译这句话吗？"],["The team wants to transform the system.","团队想改造这个系统。"]]},{"id":"m_inter","form":"inter-","type":"prefix","meaning":"在…之间 between","desc":"表示「相互、在…之间」","words":["interact","interview","international","interrupt","internet","intercept"],"sentences":[["Kids should interact more outside.","孩子应该多在外面互动。"],["I have a job interview tomorrow.","我明天有工作面试。"],["This is an international flight.","这是国际航班。"]]},{"id":"m_en","form":"en-","type":"prefix","meaning":"使成为 / 放进 make/put","desc":"表示「使…进入状态」","words":["enable","enrich","enforce","engage","enroll","encase"],"sentences":[["This tool will enable faster work.","这个工具能提高工作效率。"],["Reading enriches your mind.","阅读丰富你的思维。"],["Police enforce the traffic law.","警察执行交通法规。"]]},{"id":"m_anti","form":"anti-","type":"prefix","meaning":"反对 / 对抗 against","desc":"表示「反对、对抗」","words":["antivirus","antibacterial","antifreeze","antisocial","antibiotic","antioxidant"],"sentences":[["Install antivirus software on your PC.","在电脑上安装杀毒软件。"],["Wash with antibacterial soap.","用抗菌皂清洗。"],["Add antifreeze to the engine.","给引擎加防冻液。"]]},{"id":"m_bene","form":"bene-","type":"prefix","meaning":"好的 / 善的 good","desc":"表示「好、善」","words":["benefit","benevolent","beneficial","benefactor"],"sentences":[["Exercise has many benefits.","锻炼有很多好处。"],["She is a benevolent leader.","她是一位仁慈的领导者。"],["This change is beneficial to all.","这个变化对所有人有益。"]]},{"id":"m_over","form":"over-","type":"prefix","meaning":"过度 / 超过 too much","desc":"表示「过度、超过」","words":["overthink","overwork","overflow","overload","overlook","overcome"],"sentences":[["Don't overthink the problem.","不要过度思考这个问题。"],["The river may overflow in rain.","下雨时河水可能溢出。"],["We can overcome this challenge.","我们能克服这个挑战。"]]},{"id":"m_sub","form":"sub-","type":"prefix","meaning":"在…下面 / 次于 under","desc":"表示「在下面、次于」","words":["subway","submarine","subtitle","substandard","submerge","subordinate"],"sentences":[["Take the subway to downtown.","坐地铁去市中心。"],["Add subtitles to the video.","给视频加字幕。"],["The toy can submerge in water.","玩具可以在水中下潜。"]]},{"id":"m_in","form":"in-","type":"prefix","meaning":"不 / 向内 not/into","desc":"表示「不、向内」（也有 il-/ir-/im- 变体）","words":["inactive","incomplete","indirect","illegal","irregular","impossible"],"sentences":[["The account is inactive now.","账户现在不活跃。"],["The task is still incomplete.","任务仍然不完整。"],["Flying without a passport is illegal.","没护照飞行是非法的。"]]},{"id":"m_auto","form":"auto-","type":"prefix","meaning":"自己 / 自动 self","desc":"表示「自己、自动」","words":["automatic","autobiography","automobile","autonomous","autofocus","autopilot"],"sentences":[["The door has an automatic sensor.","门有自动感应器。"],["He wrote his autobiography last year.","他去年写了自传。"],["The automobile factory is large.","汽车工厂很大。"]]},{"id":"m_co","form":"co-","type":"prefix","meaning":"共同 / 一起 together","desc":"表示「共同、一起」","words":["cooperate","coexist","coauthor","coordinate","coworker","coeducation"],"sentences":[["Let's cooperate on this project.","我们一起合作这个项目。"],["Peaceful nations must coexist.","和平的国家必须共存。"],["She is my coworker and friend.","她是我的同事和朋友。"]]},{"id":"m_micro","form":"micro-","type":"prefix","meaning":"微小 / 微型 tiny","desc":"表示「微小、微型」","words":["microphone","microscope","microwave","microchip","microorganism","microfilm"],"sentences":[["Speak into the microphone clearly.","对着麦克风清楚说话。"],["Look at cells under a microscope.","用显微镜观察细胞。"],["Heat it in the microwave for 3 minutes.","在微波炉里加热3分钟。"]]},{"id":"m_ful","form":"-ful","type":"suffix","meaning":"充满…的 full of","desc":"表示「充满…的」","words":["helpful","joyful","careful","useful","thankful","wonderful"],"sentences":[["Your advice is very helpful.","你的建议很有帮助。"],["They had a joyful celebration.","他们庆祝得很开心。"],["Be careful when crossing the street.","过马路要小心。"]]},{"id":"m_less","form":"-less","type":"suffix","meaning":"没有…的 without","desc":"表示「缺乏、没有」","words":["endless","fearless","homeless","careless","harmless","speechless"],"sentences":[["The desert looks endless.","沙漠看起来无边无际。"],["She is a fearless explorer.","她是一位无畏的探险家。"],["The snake is actually harmless.","那条蛇其实无害。"]]},{"id":"m_er","form":"-er","type":"suffix","meaning":"做…的人/物 doer","desc":"表示「做…的人或物」","words":["teacher","player","worker","runner","speaker","washer"],"sentences":[["My teacher is very patient.","我的老师很有耐心。"],["He is a good football player.","他是好足球运动员。"],["The factory needs more workers.","工厂需要更多工人。"]]},{"id":"m_ly","form":"-ly","type":"suffix","meaning":"…地 manner","desc":"表示「方式、程度」构成副词","words":["quickly","happily","finally","really","suddenly","slowly"],"sentences":[["She finished the task quickly.","她很快完成了任务。"],["They lived happily ever after.","他们从此幸福地生活。"],["Finally, we reached the top.","最后，我们到达了山顶。"]]},{"id":"m_ness","form":"-ness","type":"suffix","meaning":"…的状态/性质 state","desc":"表示「状态、性质」","words":["happiness","kindness","darkness","weakness","thickness","awareness"],"sentences":[["True happiness comes from love.","真正的幸福来自爱。"],["Show kindness to everyone.","对每个人都友善。"],["We walked into the darkness.","我们走进了黑暗中。"]]},{"id":"m_ous","form":"-ous","type":"suffix","meaning":"有…性质的 having","desc":"表示「充满、具有…性质」","words":["famous","dangerous","curious","nervous","generous","humorous"],"sentences":[["She is a famous singer.","她是著名歌手。"],["Snakes can be dangerous.","蛇可能很危险。"],["I'm curious about science.","我对科学很好奇。"]]},{"id":"m_ive","form":"-ive","type":"suffix","meaning":"有…倾向的 tending to","desc":"表示「有…倾向或性质的」","words":["active","creative","positive","negative","effective","attractive"],"sentences":[["Stay active for good health.","保持活跃才有好健康。"],["She has many creative ideas.","她有很多创意。"],["Give positive feedback to your team.","给你的团队正面反馈。"]]},{"id":"m_ist","form":"-ist","type":"suffix","meaning":"…者/…的人 person","desc":"表示「从事…的人」","words":["artist","scientist","pianist","tourist","dentist","optimist"],"sentences":[["He wants to be an artist.","他想成为艺术家。"],["Scientists do important research.","科学家做重要研究。"],["The tourist asked for directions.","游客问了路。"]]},{"id":"m_al","form":"-al","type":"suffix","meaning":"…的 / 属于… of/pertaining to","desc":"表示「与…有关的」","words":["natural","personal","national","professional","emotional","cultural"],"sentences":[["We love natural scenery.","我们爱自然风光。"],["This is my personal opinion.","这是我个人意见。"],["It became a national holiday.","它成为了全国性节日。"]]},{"id":"m_age","form":"-age","type":"suffix","meaning":"状态 / 费用 / 集合 state/fee","desc":"表示「状态、集合、费用」","words":["package","shortage","marriage","postage","coverage","usage"],"sentences":[["I received a big package today.","我今天收到了一个大包裹。"],["There is a water shortage.","出现了水资源短缺。"],["Their marriage is very happy.","他们的婚姻很幸福。"]]},{"id":"m_able","form":"-able","type":"suffix","meaning":"可…的 / 能…的 able to","desc":"表示「可以、能够」","words":["readable","movable","enjoyable","reliable","comfortable","valuable"],"sentences":[["This story is very readable.","这个故事可读性很强。"],["Find a comfortable chair to sit.","找一把舒服的椅子坐。"],["She is a reliable partner.","她是一位可靠的搭档。"]]},{"id":"m_ment","form":"-ment","type":"suffix","meaning":"…的行为/结果 act/result","desc":"表示「行为、结果、状态」","words":["movement","agreement","treatment","development","punishment","encouragement"],"sentences":[["They reached an agreement quickly.","他们很快就达成了协议。"],["The patient needs good treatment.","病人需要好的治疗。"],["City development is very fast here.","这里城市发展很快。"]]},{"id":"m_tion","form":"-tion","type":"suffix","meaning":"…的动作/状态 act/state","desc":"表示「动作、过程、状态」（含 -sion）","words":["education","information","situation","celebration","permission","competition"],"sentences":[["Education is the key to success.","教育是成功的关键。"],["Give me more information please.","请给我更多信息。"],["This situation is quite complex.","这种情况相当复杂。"]]},{"id":"m_ship","form":"-ship","type":"suffix","meaning":"…的关系/身份 state/relation","desc":"表示「状态、关系、身份」","words":["friendship","leadership","relationship","membership","ownership","citizenship"],"sentences":[["Their friendship lasts for decades.","他们的友谊持续了几十年。"],["She shows great leadership skills.","她展现了出色的领导力。"],["We value this relationship deeply.","我们很珍惜这段关系。"]]},{"id":"m_hood","form":"-hood","type":"suffix","meaning":"…的时期/状态 state/period","desc":"表示「身份、时期、状态」","words":["childhood","neighborhood","adulthood","fatherhood","likelihood","parenthood"],"sentences":[["I have happy childhood memories.","我有幸福的童年回忆。"],["My neighborhood is very quiet.","我的社区很安静。"],["Adult life brings many challenges.","成年后带来很多挑战。"]]},{"id":"m_ward","form":"-ward","type":"suffix","meaning":"朝…的方向 toward","desc":"表示「朝、向…方向」","words":["forward","backward","homeward","upward","downward","seaward"],"sentences":[["Take a step forward please.","请向前走一步。"],["Don't look backward in regret.","不要回头后悔。"],["The path leads upward to the hill.","小路向上通往山上。"]]},{"id":"m_ject","form":"ject","type":"root","meaning":"投掷 / 扔 throw","desc":"词根 ject = 投、掷、扔","words":["project","inject","reject","eject","subject","object"],"sentences":[["This is our school project.","这是我们学校的项目。"],["The doctor will inject medicine.","医生会注射药物。"],["Don't reject a good opportunity.","不要拒绝好机会。"]]},{"id":"m_port","form":"port","type":"root","meaning":"携带 / 运输 carry","desc":"词根 port = 拿、运、携带","words":["import","export","transport","portable","report","support"],"sentences":[["Japan imports oil from abroad.","日本从国外进口石油。"],["China exports many electronic goods.","中国出口很多电子产品。"],["A laptop is very portable.","笔记本电脑很便携。"]]},{"id":"m_struct","form":"struct","type":"root","meaning":"建造 / 结构 build","desc":"词根 struct = 建造、构建、结构","words":["construct","structure","destruct","instruct","infrastructure","reconstruct"],"sentences":[["They construct a new bridge here.","他们在这里建新桥。"],["The building structure is safe.","建筑结构是安全的。"],["He instructs the team every morning.","他每天早上指导团队。"]]},{"id":"m_spect","form":"spect","type":"root","meaning":"看 / 观察 look/see","desc":"词根 spect = 看、观察","words":["inspect","respect","spectacle","prospect","suspect","spectator"],"sentences":[["Please inspect the goods carefully.","请仔细检查货物。"],["We should respect the elders.","我们应该尊重长辈。"],["The firework was a great spectacle.","烟火是壮观的景象。"]]},{"id":"m_script","form":"script","type":"root","meaning":"写 / 书写 write","desc":"词根 script/scrib = 写","words":["describe","prescription","manuscript","subscribe","transcript","inscribe"],"sentences":[["Describe what you saw in detail.","详细描述你看到的东西。"],["The doctor wrote a prescription.","医生开了处方。"],["Subscribe to our monthly newsletter.","订阅我们的月刊。"]]},{"id":"m_dict","form":"dict","type":"root","meaning":"说 / 讲话 speak/say","desc":"词根 dict = 说、讲","words":["dictionary","predict","dictate","verdict","contradict","benediction"],"sentences":[["Look up the word in a dictionary.","在字典里查一下这个词。"],["We cannot predict the future.","我们无法预测未来。"],["Follow what the rules dictate.","按规则说的做。"]]},{"id":"m_rupt","form":"rupt","type":"root","meaning":"断裂 / 破裂 break","desc":"词根 rupt = 断裂、破裂","words":["interrupt","erupt","bankrupt","disrupt","corrupt","rupture"],"sentences":[["Don't interrupt while I'm talking.","我说话时不要打断。"],["The volcano may erupt soon.","火山可能很快喷发。"],["The business went bankrupt last month.","上个月公司破产了。"]]},{"id":"m_form","form":"form","type":"root","meaning":"形状 / 形成 shape/form","desc":"词根 form = 形状、形成","words":["transform","reform","uniform","perform","deform","conform"],"sentences":[["Technology can transform education.","技术能改变教育。"],["Students wear a school uniform.","学生穿校服。"],["She will perform on stage tonight.","她今晚会在舞台上表演。"]]},{"id":"m_tract","form":"tract","type":"root","meaning":"拉 / 牵引 pull/draw","desc":"词根 tract = 拉、牵引","words":["attract","contract","subtract","extract","retract","distraction"],"sentences":[["Bright colors attract attention.","鲜艳的颜色吸引注意。"],["Please sign the contract first.","请先签合同。"],["Subtract 5 from 12 to get 7.","12减5等于7。"]]},{"id":"m_mit","form":"mit","type":"root","meaning":"发送 / 放出 send","desc":"词根 mit/miss = 发送、放出","words":["submit","commit","admit","permit","transmit","remit"],"sentences":[["Please submit your report by Friday.","请在周五前提交你的报告。"],["She will commit to the plan.","她会承诺执行这个计划。"],["I admit I made a mistake.","我承认我犯了一个错误。"]]}]
+</script>
 <script>
-var DATA = {"prefix": [{"id": "m_re", "sym": "re-", "meaning": "重新，再次，往回", "desc": "表示「再次」做某事或「往回」的方向", "examples": [["I need to redo my homework.", "我需要重做我的作业。"], ["She rewrote the letter three times.", "她把信重写了三遍。"], ["The movie will restart in 5 minutes.", "电影5分钟后重新开始。"]], "words": ["review", "rebuild", "react", "recycle", "replay", "restart"]}, {"id": "m_un", "sym": "un-", "meaning": "不，相反", "desc": "加在形容词或动词前，表示否定或相反动作", "examples": [["He felt unhappy about the news.", "他对这个消息感到不高兴。"], ["Can you unlock the door for me?", "你能帮我把门打开吗？"], ["It is unfair to blame only her.", "只怪她一个人不公平。"]], "words": ["unable", "unfold", "unzip", "unreal", "uncover", "unusual"]}, {"id": "m_dis", "sym": "dis-", "meaning": "不，分开，相反", "desc": "表示否定、分开或相反的意思", "examples": [["I disagree with your opinion.", "我不同意你的观点。"], ["Why do you dislike math so much?", "你为什么这么不喜欢数学？"], ["The sun disappeared behind the clouds.", "太阳消失在云层后面。"]], "words": ["discover", "disconnect", "dishonest", "disorder", "disable", "discourage"]}, {"id": "m_pre", "sym": "pre-", "meaning": "在...之前，预先", "desc": "表示时间或顺序上的「之前」", "examples": [["Please preview the lesson before class.", "请课前预习这节课。"], ["My little sister goes to preschool.", "我的小妹妹上幼儿园。"], ["Preheat the oven to 180 degrees.", "把烤箱预热到180度。"]], "words": ["prepare", "predict", "prefix", "precede", "prewar", "preview"]}, {"id": "m_mis", "sym": "mis-", "meaning": "错误地，坏", "desc": "表示错误、坏的或不恰当的", "examples": [["I often misunderstand his jokes.", "我经常误解他的笑话。"], ["Be careful not to misplace your keys.", "小心别把钥匙放错地方。"], ["She misspelled my name again.", "她又拼错了我的名字。"]], "words": ["mislead", "misuse", "misbehave", "miscount", "misfortune", "mistrust"]}, {"id": "m_over", "sym": "over-", "meaning": "超过，过度", "desc": "表示超过限度、在上面或过度", "examples": [["Don't overcook the vegetables.", "别把蔬菜煮过头了。"], ["The river began to overflow after the storm.", "暴雨后河水开始泛滥。"], ["We will overcome this difficulty together.", "我们一起克服这个困难。"]], "words": ["overlook", "overheat", "overtime", "overseas", "overcome", "overload"]}, {"id": "m_sub", "sym": "sub-", "meaning": "在下面，次于", "desc": "表示「在...之下」或「次于」", "examples": [["I take the subway to work every day.", "我每天坐地铁上班。"], ["The submarine dove deep into the ocean.", "潜水艇潜入深海。"], ["Please add subtitles to this video.", "请给这个视频加字幕。"]], "words": ["subset", "submerge", "subzero", "subway", "submarine", "subtitle"]}, {"id": "m_in", "sym": "in-/im-", "meaning": "不，向内", "desc": "表示否定或「向内」。在 b/m/p 前用 im-", "examples": [["Your answer is incorrect, try again.", "你的答案不正确，再试一次。"], ["The house was invisible from the road.", "那栋房子从路上看不见。"], ["It is impolite to interrupt others.", "打断别人是不礼貌的。"]], "words": ["impossible", "imperfect", "indirect", "incomplete", "impatient", "inactive"]}, {"id": "m_trans", "sym": "trans-", "meaning": "跨越，转移", "desc": "表示「穿过」「转移」或「改变」", "examples": [["We need to transport these goods by truck.", "我们需要用卡车运输这些货物。"], ["Can you transfer the money to my account?", "你能把钱转到我的账户吗？"], ["A caterpillar will transform into a butterfly.", "毛毛虫会变成蝴蝶。"]], "words": ["translate", "transplant", "transparent", "transaction", "transmit", "transition"]}, {"id": "m_inter", "sym": "inter-", "meaning": "在...之间，互相", "desc": "表示「在...之间」或「互相」", "examples": [["She wants to travel internationally.", "她想去国际旅行。"], ["Please don't interrupt while I'm speaking.", "我说话时请不要打断。"], ["I have an interview tomorrow morning.", "我明天早上有一个面试。"]], "words": ["interact", "internet", "interstate", "interchange", "intermediate", "interpersonal"]}, {"id": "m_en", "sym": "en-", "meaning": "使...，放进", "desc": "使变成某种状态，或放入其中", "examples": [["Music can enable us to feel better.", "音乐能让我们感觉更好。"], ["We all enjoy eating ice cream in summer.", "我们都喜欢夏天吃冰淇淋。"], ["Reading can enrich your vocabulary.", "阅读可以丰富你的词汇量。"]], "words": ["enlarge", "encourage", "endanger", "enclose", "enforce", "enroll"]}, {"id": "m_anti", "sym": "anti-", "meaning": "反对，对抗", "desc": "表示「反对」或「对抗」", "examples": [["The body produces antibodies to fight viruses.", "身体产生抗体来对抗病毒。"], ["You should install antivirus software.", "你应该安装杀毒软件。"], ["His antisocial behavior worried his parents.", "他反社会的行为让父母担心。"]], "words": ["antifreeze", "antiwar", "anticlock", "antibiotic", "antipathy", "antidote"]}, {"id": "m_bene", "sym": "bene", "meaning": "好，善", "desc": "词根，表示「好」或「善」", "examples": [["Exercise is beneficial to your health.", "锻炼对你的健康有益。"], ["She is a very benevolent person.", "她是一个非常仁慈的人。"], ["The charity event had many benefactors.", "这次慈善活动有很多捐助者。"]], "words": ["benediction", "benign", "beneficial", "beneficiary", "benevolence", "benefit"]}, {"id": "m_mal", "sym": "mal", "meaning": "坏，恶", "desc": "词根，表示「坏」或「恶」", "examples": [["The machine started to malfunction.", "这台机器开始出故障了。"], ["He showed no malice toward anyone.", "他对任何人都没有恶意。"], ["Malaria is spread by mosquitoes.", "疟疾是由蚊子传播的。"]], "words": ["malignant", "malpractice", "malevolent", "malady", "malcontent", "malnutrition"]}, {"id": "m_auto", "sym": "auto", "meaning": "自己，自动", "desc": "词根，表示「自己」或「自动」", "examples": [["The car has an automatic transmission.", "这辆车有自动变速箱。"], ["Can I have your autograph?", "能给我你的签名吗？"], ["The factory uses many automated machines.", "工厂使用许多自动化机器。"]], "words": ["automobile", "autonomy", "autobiography", "autopilot", "autofocus", "autocrat"]}, {"id": "m_tele", "sym": "tele", "meaning": "远，远程", "desc": "词根，表示「远距离」", "examples": [["I watch television every evening.", "我每天晚上看电视。"], ["The telephone rang but nobody answered.", "电话响了但没人接。"], ["Astronomers use telescopes to observe stars.", "天文学家用望远镜观察星星。"]], "words": ["telegram", "telegraph", "teleport", "telepathy", "telemarketing", "teleconference"]}], "suffix": [{"id": "m_ful", "sym": "-ful", "meaning": "充满...的", "desc": "形容词后缀，表示「充满」", "examples": [["She is hopeful about the future.", "她对未来充满希望。"], ["The garden is very colorful in spring.", "花园在春天非常色彩缤纷。"], ["This tool is really useful for cooking.", "这个工具对做饭真的很有用。"]], "words": ["powerful", "wonderful", "beautiful", "peaceful", "graceful", "thoughtful"]}, {"id": "m_less", "sym": "-less", "meaning": "没有...的", "desc": "形容词后缀，表示「缺少」或「没有」", "examples": [["Many people became homeless after the earthquake.", "地震后许多人变得无家可归。"], ["He is a fearless firefighter.", "他是一名无畏的消防员。"], ["The desert seems endless.", "沙漠看起来无边无际。"]], "words": ["careless", "useless", "harmless", "speechless", "priceless", "hopeless"]}, {"id": "m_er", "sym": "-er", "meaning": "做...的人/物", "desc": "名词后缀，表示执行动作的人或工具", "examples": [["My mother is an excellent teacher.", "我妈妈是一名优秀的老师。"], ["She is the fastest runner in our school.", "她是我们学校最快的跑步者。"], ["He wants to become a professional player.", "他想成为一名职业选手。"]], "words": ["baker", "writer", "worker", "singer", "painter", "driver"]}, {"id": "m_ly", "sym": "-ly", "meaning": "以...方式地", "desc": "副词后缀，表示方式或程度", "examples": [["Please speak more slowly.", "请说得慢一点。"], ["The children played happily in the park.", "孩子们在公园里快乐地玩耍。"], ["She carefully opened the old letter.", "她小心地打开了那封旧信。"]], "words": ["loudly", "sadly", "easily", "gently", "suddenly", "actually"]}, {"id": "m_ness", "sym": "-ness", "meaning": "...的状态/性质", "desc": "名词后缀，将形容词变成名词", "examples": [["Her happiness was obvious to everyone.", "她的快乐对每个人都很明显。"], ["The power outage caused complete darkness.", "停电导致了完全的黑暗。"], ["Thank you for your kindness.", "谢谢你的善意。"]], "words": ["sadness", "weakness", "fitness", "illness", "awareness", "loneliness"]}, {"id": "m_able", "sym": "-able", "meaning": "能够...的", "desc": "形容词后缀，表示「可以...的」", "examples": [["This jacket is washable in cold water.", "这件夹克可以用冷水洗。"], ["His handwriting is barely readable.", "他的笔迹几乎无法辨认。"], ["The sofa is very comfortable.", "这个沙发非常舒适。"]], "words": ["movable", "enjoyable", "believable", "breakable", "renewable", "remarkable"]}, {"id": "m_ment", "sym": "-ment", "meaning": "...的行为/结果", "desc": "名词后缀，表示动作的过程或结果", "examples": [["She noticed a slight movement in the bushes.", "她注意到灌木丛中有轻微的动作。"], ["We finally reached an agreement.", "我们终于达成了协议。"], ["The monthly payment is due tomorrow.", "每月付款明天到期。"]], "words": ["enjoyment", "apartment", "equipment", "achievement", "development", "investment"]}, {"id": "m_tion", "sym": "-tion", "meaning": "...的动作/状态", "desc": "名词后缀，表示动作或状态", "examples": [["Take action before it is too late.", "在太晚之前采取行动。"], ["The whole nation celebrated the victory.", "整个国家庆祝了胜利。"], ["Can you answer this question?", "你能回答这个问题吗？"]], "words": ["section", "attention", "education", "information", "suggestion", "celebration"]}, {"id": "m_ous", "sym": "-ous", "meaning": "具有...性质的", "desc": "形容词后缀，表示「充满...的」", "examples": [["She became famous overnight.", "她一夜之间出名了。"], ["The road is dangerous at night.", "这条路晚上很危险。"], ["He is always curious about new things.", "他总是对新事物感到好奇。"]], "words": ["serious", "various", "nervous", "generous", "ambitious", "mysterious"]}, {"id": "m_ive", "sym": "-ive", "meaning": "有...倾向的", "desc": "形容词后缀，表示倾向或性质", "examples": [["We need to stay active and healthy.", "我们需要保持活跃和健康。"], ["She is very creative in art class.", "她在美术课上非常有创造力。"], ["They shared many positive memories together.", "他们一起分享了许多积极的回忆。"]], "words": ["native", "attractive", "expensive", "protective", "impressive", "competitive"]}, {"id": "m_ist", "sym": "-ist", "meaning": "从事...的人", "desc": "名词后缀，表示某领域的专家或从业者", "examples": [["The artist painted a beautiful landscape.", "艺术家画了一幅美丽的风景。"], ["She wants to become a scientist one day.", "她希望有一天成为一名科学家。"], ["The pianist played a wonderful piece.", "钢琴家演奏了一首美妙的曲子。"]], "words": ["tourist", "dentist", "journalist", "specialist", "psychologist", "economist"]}, {"id": "m_al", "sym": "-al", "meaning": "与...有关的", "desc": "形容词后缀，表示「与...相关」", "examples": [["It is natural to feel nervous sometimes.", "有时感到紧张是很自然的。"], ["This is my personal opinion.", "这是我个人的意见。"], ["The festival is a national holiday.", "这个节日是国家假日。"]], "words": ["traditional", "accidental", "musical", "optional", "emotional", "professional"]}, {"id": "m_age", "sym": "-age", "meaning": "...的状态/集合", "desc": "名词后缀，表示状态或总称", "examples": [["Their marriage lasted 50 happy years.", "他们的婚姻持续了50个幸福的年头。"], ["I received a package from my friend.", "我收到了朋友寄来的包裹。"], ["The village is surrounded by mountains.", "这个村庄被群山环绕。"]], "words": ["shortage", "storage", "courage", "advantage", "percentage", "language"]}, {"id": "m_ure", "sym": "-ure", "meaning": "...的动作/结果", "desc": "名词后缀，表示动作或其结果", "examples": [["His biggest fear was failure.", "他最大的恐惧是失败。"], ["The store will face closure next month.", "这家店下个月将面临关闭。"], ["It was a pleasure to meet you.", "很高兴认识你。"]], "words": ["pressure", "exposure", "adventure", "procedure", "signature", "temperature"]}, {"id": "m_ence", "sym": "-ence", "meaning": "...的状态", "desc": "名词后缀，表示状态或性质", "examples": [["Can you explain the reason for your absence?", "你能解释一下你缺席的原因吗？"], ["There is a big difference between the two.", "这两者之间有很大的区别。"], ["She accepted the news in silence.", "她沉默地接受了这个消息。"]], "words": ["patience", "confidence", "violence", "existence", "intelligence", "independence"]}, {"id": "m_ize", "sym": "-ize", "meaning": "使...化", "desc": "动词后缀，表示「使变成」", "examples": [["I didn't realize how late it was.", "我没有意识到有多晚了。"], ["We need to organize our files better.", "我们需要更好地整理文件。"], ["I couldn't recognize him at first.", "我一开始没认出他。"]], "words": ["apologize", "memorize", "specialize", "summarize", "emphasize", "modernize"]}], "root": [{"id": "m_ject", "sym": "ject", "meaning": "投，扔", "desc": "词根，表示「投掷」或「扔」", "examples": [["The teacher decided to reject his proposal.", "老师决定拒绝他的提议。"], ["The doctor will inject the vaccine now.", "医生现在要注射疫苗了。"], ["Let's start a new project together.", "我们一起开始一个新项目吧。"]], "words": ["eject", "subject", "object", "projectile", "interjection", "trajectory"]}, {"id": "m_port", "sym": "port", "meaning": "携带，运输", "desc": "词根，表示「携带」或「运输」", "examples": [["China imports oil from many countries.", "中国从许多国家进口石油。"], ["The company will export goods to Europe.", "公司将向欧洲出口商品。"], ["Can you help me carry this portable speaker?", "你能帮我拿这个便携音响吗？"]], "words": ["report", "support", "transport", "deport", "portfolio", "porter"]}, {"id": "m_struct", "sym": "struct", "meaning": "建造", "desc": "词根，表示「建造」或「构造」", "examples": [["They will construct a new bridge here.", "他们将在这里建造一座新桥。"], ["The fire destroyed the old building completely.", "大火完全摧毁了那栋老建筑。"], ["Please follow the instructions carefully.", "请仔细遵循说明。"]], "words": ["structure", "obstruct", "reconstruct", "infrastructure", "destructive", "constructive"]}, {"id": "m_spect", "sym": "spect", "meaning": "看", "desc": "词根，表示「看」或「观察」", "examples": [["I want to inspect the car before buying it.", "买之前我想检查一下这辆车。"], ["We should respect different opinions.", "我们应该尊重不同的意见。"], ["The game attracted thousands of spectators.", "比赛吸引了成千上万的观众。"]], "words": ["prospect", "suspect", "expect", "perspective", "retrospect", "spectacle"]}, {"id": "m_script", "sym": "script", "meaning": "写", "desc": "词根，表示「写」或「记录」", "examples": [["Can you describe what you saw?", "你能描述一下你看到的吗？"], ["The doctor prescribed some medicine.", "医生开了一些药。"], ["I want to subscribe to this magazine.", "我想订阅这本杂志。"]], "words": ["manuscript", "transcript", "inscription", "prescription", "description", "postscript"]}, {"id": "m_aud", "sym": "aud", "meaning": "听", "desc": "词根，表示「听」或「声音」", "examples": [["Please turn up the audio volume.", "请调高音频音量。"], ["The audience clapped loudly after the show.", "演出结束后观众热烈鼓掌。"], ["The school has a large auditorium.", "学校有一个大礼堂。"]], "words": ["audition", "audible", "inaudible", "audiobook", "auditory", "auditor"]}, {"id": "m_vid", "sym": "vid/vis", "meaning": "看", "desc": "词根，表示「看」或「看见」", "examples": [["I watched a funny video online.", "我在网上看了一个有趣的视频。"], ["Can you provide some evidence for your claim?", "你能提供一些证据支持你的说法吗？"], ["She has a clear vision for the future.", "她对未来有清晰的愿景。"]], "words": ["visible", "visit", "visual", "revise", "supervise", "television"]}, {"id": "m_duct", "sym": "duct", "meaning": "引导", "desc": "词根，表示「引导」或「带领」", "examples": [["He will conduct the orchestra tonight.", "他今晚将指挥管弦乐队。"], ["This product is very popular among teenagers.", "这个产品在青少年中很受欢迎。"], ["We should reduce waste to protect the environment.", "我们应该减少浪费以保护环境。"]], "words": ["introduce", "deduct", "educate", "viaduct", "induction", "dedication"]}, {"id": "m_form", "sym": "form", "meaning": "形状，形成", "desc": "词根，表示「形状」或「形成」", "examples": [["The wizard can transform into a dragon.", "巫师可以变形为一条龙。"], ["She will perform a song for us.", "她将为我们表演一首歌。"], ["All students must wear a school uniform.", "所有学生必须穿校服。"]], "words": ["reform", "inform", "platform", "deform", "conform", "format"]}, {"id": "m_miss", "sym": "miss/mit", "meaning": "发送", "desc": "词根，表示「发送」或「放出」", "examples": [["The radio tower can transmit signals far away.", "无线电塔可以远距离传输信号。"], ["Your mission is to find the lost treasure.", "你的任务是找到丢失的宝藏。"], ["I will dismiss the class early today.", "我今天会提前下课。"]], "words": ["permission", "admit", "commit", "submit", "omit", "remit"]}]};
+"use strict";
+var MORPHEMES=[];
+var completed={};
+var currentTab='prefix';
 
-var currentTab = 'prefix';
-
-function switchTab(tab) {
-  currentTab = tab;
-  var labels = {prefix: '\u524d\u7f00', suffix: '\u540e\u7f00', root: '\u8bcd\u6839'};
-  document.querySelectorAll('.tab').forEach(function(t){ 
-    t.classList.toggle('active', t.textContent.includes(labels[tab])); 
-  });
-  renderCards();
+function toggleUnit(id){
+  var c=document.getElementById('uc-'+id);
+  if(!c)return;
+  var ok=c.querySelector('.quiz-opt.correct,.quiz-opt.wrong');
+  if(ok)return;
+  c.classList.toggle('expanded');
 }
 
-function renderCards() {
-  var items = DATA[currentTab];
-  var h = '';
-  items.forEach(function(m) {
-    h += '<div class="card" id="card-' + m.id + '">';
-    h += '<div class="card-head" onclick="toggleCard(this.parentElement)">';
-    h += '<span class="card-sym">' + esc(m.sym) + '</span>';
-    h += '<div style="flex:1"><div class="card-meaning">' + esc(m.meaning) + '</div><div class="card-desc">' + esc(m.desc) + '</div></div>';
-    h += '<span class="card-arrow">\u25b6</span>';
-    h += '</div><div class="card-body">';
-    h += '<div class="examples"><div class="ex-label">\u4f8b\u53e5</div>';
-    m.examples.forEach(function(ex, ei) {
-      var eid = 'exen_' + m.id + '_' + ei;
-      h += '<div class="ex-item"><span class="ex-en" id="' + eid + '">' + esc(ex[0]) + '</span><span class="ex-zh">' + esc(ex[1]) + '</span><span class="ex-speak" onclick="event.stopPropagation();speakById(\'' + eid + '\')" title="\u8ddf\u8bfb">\ud83d\udd0a</span></div>';
+function speakWord(w){
+  if(window.speechSynthesis){
+    window.speechSynthesis.cancel();
+    var u=new SpeechSynthesisUtterance(w);
+    u.lang='en-US';
+    u.rate=0.82;
+    window.speechSynthesis.speak(u);
+  }
+}
+
+function startQuiz(id){
+  var card=document.getElementById('uc-'+id);
+  if(!card||card.classList.contains('quizzing'))return;
+  card.classList.add('quizzing');
+  card.classList.add('expanded');
+}
+
+function answerQuiz(id,meaning,wrong){
+  var fb=document.getElementById('qzfb-'+id);
+  if(!fb)return;
+  fb.classList.add('show');
+  fb.className='quiz-fb show '+(wrong?'bad':'good');
+  fb.textContent=wrong?'再想想，正确答案在释义里 👆':'✅ 正确！'+getEmoji();
+  completed[id]=true;
+  var qc=document.getElementById('qc-'+id);
+  if(qc)qc.style.display='none';
+  updateScore();
+}
+
+function getEmoji(){
+  var e=['🌟','🎉','👏','💪','🔥','💡','✨'];
+  return e[Math.floor(Math.random()*e.length)];
+}
+
+function updateScore(){
+  var total=MORPHEMES.filter(function(m){return m.type===currentTab;}).length;
+  var done=0;
+  MORPHEMES.forEach(function(m){if(m.type===currentTab&&completed[m.id])done++;});
+  var pct=total>0?Math.round(done/total*100):0;
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('progressNum').textContent=done+'/'+total;
+}
+
+function switchTab(type){
+  currentTab=type;
+  document.querySelectorAll('.tab-btn').forEach(function(b,i){
+    var t=b.textContent.trim();
+    b.classList.toggle('active',
+      (i===0&&type==='prefix')||(i===1&&type==='suffix')||(i===2&&type==='root'));
+  });
+  renderUnits();
+  updateScore();
+}
+
+function renderUnits(){
+  var list=document.getElementById('unitList');
+  var data=MORPHEMES.filter(function(m){return m.type===currentTab;});
+  var typeIcon={prefix:'🔷',suffix:'🔰',root:'🧱'};
+  var typeColor={prefix:'prefix',suffix:'suffix',root:'root'};
+  var html='';
+  data.forEach(function(m){
+    var encId=m.id.replace(/'/g,"\\'");
+    var escMeaning=m.meaning.replace(/'/g,"\\'");
+    var allMeanings=MORPHEMES.filter(function(x){return x.type===m.type&&x.id!==m.id;}).map(function(x){return x.meaning;})
+      .sort(function(){return Math.random()-0.5;}).slice(0,3);
+    allMeanings.push(m.meaning);
+    allMeanings.sort(function(){return Math.random()-0.5;});
+    html+='<div class="unit-card" id="uc-'+m.id+'">';
+    html+='<div class="unit-head" onclick="toggleUnit(\''+encId+'\')">';
+    html+='<div class="unit-icon '+typeColor[m.type]+'">'+typeIcon[m.type]+'</div>';
+    html+='<div class="unit-main"><div class="unit-form">'+escHtml(m.form)+'</div>';
+    html+='<div class="unit-meaning">'+escHtml(m.meaning)+'</div></div>';
+    html+='<div class="unit-meta">'+m.words.length+'词</div>';
+    html+='<div class="unit-arrow">▾</div></div>';
+    html+='<div class="unit-body">';
+    html+='<div class="unit-desc">💡 '+escHtml(m.desc)+'</div>';
+    html+='<div class="unit-label">📝 拓展词</div>';
+    html+='<div class="word-chips">';
+    m.words.forEach(function(w){
+      var we=w.replace(/'/g,"\\'");
+      html+='<span class="word-chip" onclick="event.stopPropagation();speakWord(\''+we+'\')">'+escHtml(w)+' <span class="chip-speak">🔊</span></span>';
     });
-    h += '</div><div class="words">';
-    m.words.forEach(function(w) {
-      h += '<span class="word-tag" onclick="event.stopPropagation();speakWord(\'' + w + '\')">' + w + '</span>';
+    html+='</div><div class="unit-label">📖 例句</div><div class="ex-list">';
+    m.sentences.forEach(function(s){
+      var se=s[0].replace(/'/g,"\\'");
+      html+='<div class="ex-item"><span class="ex-en">'+escHtml(s[0])+'</span><span class="ex-zh">'+escHtml(s[1])+'</span><span class="ex-speak" onclick="event.stopPropagation();speakWord(\''+se+'\')">🔊</span></div>';
     });
-    h += '</div>';
-    h += '<button class="quiz-btn" onclick="event.stopPropagation();startQuiz(\'' + m.id + '\',\'' + m.sym + '\')">\ud83d\udcdd \u5c0f\u6d4b\u9a8c</button>';
-    h += '</div></div>';
+    html+='</div><div id="qc-'+m.id+'">';
+    html+='<div class="quiz-hint" onclick="event.stopPropagation();startQuiz(\''+encId+'\')">🎯 测验一下</div>';
+    html+='<div class="unit-quiz"><div class="quiz-q">'+escHtml(m.form)+' 表示什么？</div>';
+    html+='<div class="quiz-options">';
+    allMeanings.forEach(function(opt){
+      var oe=opt.replace(/'/g,"\\'");
+      html+='<span class="quiz-opt" onclick="event.stopPropagation();answerQuiz(\''+encId+'\',\''+oe+'\','+(opt!==m.meaning)+')">'+escHtml(opt)+'</span>';
+    });
+    html+='</div><div class="quiz-fb" id="qzfb-'+m.id+'"></div></div></div></div></div>';
   });
-  document.getElementById('cards').innerHTML = h;
-}
-
-function esc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-
-function toggleCard(card) { card.classList.toggle('open'); }
-
-function speakById(id) { var el = document.getElementById(id); if (el) speakWord(el.textContent); }
-
-function speakWord(word) {
-  if (!window.speechSynthesis) return;
-  window.speechSynthesis.cancel();
-  var u = new SpeechSynthesisUtterance(word);
-  u.lang = 'en-US'; u.rate = 0.8; u.volume = 0.9;
-  window.speechSynthesis.speak(u);
-}
-
-function startQuiz(mid, sym) {
-  var item = null;
-  for (var cat in DATA) {
-    for (var i=0; i<DATA[cat].length; i++) {
-      if (DATA[cat][i].id === mid) { item = DATA[cat][i]; break; }
-    }
-    if (item) break;
-  }
-  if (!item) return;
-  var allWords = [];
-  for (var cat in DATA) {
-    for (var i=0; i<DATA[cat].length; i++) {
-      if (DATA[cat][i].id !== mid) allWords = allWords.concat(DATA[cat][i].words.slice(0,3));
-    }
-  }
-  var distractors = shuf(allWords).slice(0,3);
-  var targetWords = item.words.slice(0,3);
-  var quizWords = shuf(targetWords.concat(distractors));
-  var correctSet = {}; targetWords.forEach(function(w){ correctSet[w.toLowerCase()] = true; });
-  var qId = 'quiz_' + mid;
-  var h = '<div style="background:var(--bg2);border-radius:14px;padding:16px;box-shadow:0 2px 10px rgba(0,0,0,.1)">';
-  h += '<div style="font-weight:700;margin-bottom:6px">\ud83d\udcdd \u6d4b\u9a8c\uff1a\u54ea\u4e9b\u8bcd\u5305\u542b <span style="color:var(--p)">' + sym + '</span>\uff1f</div>';
-  h += '<div style="font-size:12px;color:var(--td);margin-bottom:12px">\u70b9\u51fb\u9009\u62e9\uff08\u53ef\u591a\u9009\uff09</div>';
-  h += '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px">';
-  quizWords.forEach(function(w){
-    h += '<span class="word-tag" id="qw_' + qId + '_' + w + '" style="cursor:pointer;background:rgba(124,92,231,.1);color:var(--p)" onclick="toggleQuizWord(this,\'' + qId + '\',\'' + w.toLowerCase() + '\')">' + w + '</span>';
+  if(!data.length)html='<div class="empty-msg">暂无该分类的词根词缀</div>';
+  list.innerHTML=html;
+  ['prefix','suffix','root'].forEach(function(t){
+    var cnt=MORPHEMES.filter(function(m){return m.type===t;}).length;
+    document.querySelectorAll('.tab-btn').forEach(function(btn){
+      var txt=btn.textContent.trim();
+      if((t==='prefix'&&txt.indexOf('前缀')!==-1)||(t==='suffix'&&txt.indexOf('后缀')!==-1)||(t==='root'&&txt.indexOf('词根')!==-1)){
+        var el=btn.querySelector('.tab-count');
+        if(el)el.textContent=cnt+'个';
+      }
+    });
   });
-  h += '</div>';
-  h += '<button class="quiz-btn" onclick="checkQuiz(\'' + qId + '\',\'' + mid + '\')">\u2705 \u63d0\u4ea4</button>';
-  h += '<div id="qr_' + qId + '" style="margin-top:10px;font-size:13px"></div></div>';
-  var card = document.getElementById('card-' + mid);
-  var body = card.querySelector('.card-body');
-  body.dataset.origHtml = body.innerHTML;
-  body.innerHTML = h;
-  window['qc_' + qId] = correctSet;
-  window['qs_' + qId] = [];
 }
 
-function toggleQuizWord(el, qId, word) {
-  var sel = window['qs_' + qId];
-  var idx = sel.indexOf(word);
-  if (idx >= 0) { sel.splice(idx,1); el.style.background = 'rgba(124,92,231,.1)'; el.style.color = 'var(--p)'; }
-  else { sel.push(word); el.style.background = 'var(--p)'; el.style.color = '#fff'; }
+function escHtml(s){
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-function checkQuiz(qId, mid) {
-  var correctSet = window['qc_' + qId];
-  var sel = window['qs_' + qId];
-  var correct = []; for (var w in correctSet) correct.push(w);
-  var score = 0; sel.forEach(function(w){ if (correctSet[w]) score++; });
-  var wrong = sel.length - score;
-  var resultEl = document.getElementById('qr_' + qId);
-  if (score === correct.length && wrong === 0) {
-    resultEl.innerHTML = '<span style="color:var(--a)">\ud83c\udf89 \u5168\u5bf9\uff01\u6b63\u786e\u7b54\u6848\uff1a' + correct.join(', ') + '</span>';
-  } else {
-    resultEl.innerHTML = '<span style="color:var(--d)">\u7b54\u5bf9 ' + score + '/' + correct.length + ' \u4e2a\u3002\u6b63\u786e\u7b54\u6848\uff1a' + correct.join(', ') + '</span>';
-  }
-  setTimeout(function(){
-    var card = document.getElementById('card-' + mid);
-    var body = card.querySelector('.card-body');
-    if (body.dataset.origHtml) body.innerHTML = body.dataset.origHtml;
-  }, 3000);
-}
-
-function shuf(arr) { var a=arr.slice(); for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;} return a; }
-
-renderCards();
-
+(function(){
+  MORPHEMES=JSON.parse(document.getElementById('morphData').textContent);
+  switchTab('prefix');
+  updateScore();
+})();
 </script>
 </body>
 </html>
