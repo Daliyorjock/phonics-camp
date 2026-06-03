@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-  <meta name="version" content="v9.18-455703">
+  <meta name="version" content="v9.19-457905">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-<title>DeepLingual · v9.18-455703</title>
+<title>DeepLingual · v9.19-457905</title>
 <style>
 :root{--bg:#f8f7fc;--p:#7c5ce7;--pg:#6b52d9;--a:#00d4aa;--t:#1e1b4b;--td:#7c7c98;--err:#ff4477;--warn:#f0a040}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -4524,82 +4524,16 @@ var PHONICS_LESSONS = [
 },
 {
   id: 'L0_8',
-  title: '形态学前缀①',
-  sub: 'Morphology',
-  rules: [
-    {id:'m_re',sym:'re-',text:'redo = do again',desc:'redo = do again',words:['redo','rewrite','return','review','recycle','rebuild']},
-    {id:'m_un',sym:'un-',text:'unhappy = not happy',desc:'unhappy = not happy',words:['unhappy','unlock','unfair','unable','unzip','unfold']},
-    {id:'m_dis',sym:'dis-',text:'disagree = not agree',desc:'disagree = not agree',words:['disagree','dislike','disappear','discover','disconnect','dishonest']},
-    {id:'m_pre',sym:'pre-',text:'preview = view before',desc:'preview = view before',words:['preview','preschool','preheat','prefix','prepare','predict']},
-    {id:'m_mis',sym:'mis-',text:'misunderstand',desc:'misunderstand = 误解',words:['misunderstand','misplace','misspell','mislead','misuse','misbehave']},
-    {id:'m_over',sym:'over-',text:'overcook = cook too much',desc:'overcook = 煮过头',words:['overcook','overflow','overwork','overcome','overlook','overheat']},
-    {id:'m_sub',sym:'sub-',text:'subway = way under',desc:'subway = 地下通道',words:['subway','submarine','subtitle','subset','submerge','subzero']},
-    {id:'m_in',sym:'in-/im-',text:'in-/im- → /ɪn/',desc:'incorrect = not correct',words:['incorrect','invisible','import','impossible','impolite','imperfect']}
-  ]
-},
-{
-  id: 'L0_9',
-  title: '形态学前缀②',
-  sub: 'Morphology',
-  rules: [
-    {id:'m_trans',sym:'trans-',text:'transport = carry across',desc:'transport = carry across',words:['transport','transfer','transform','translate','transplant','transparent']},
-    {id:'m_inter',sym:'inter-',text:'inter- → /ˈɪntər/',desc:'international = 国际的',words:['international','interact','interrupt','interview','internet','interstate']},
-    {id:'m_en',sym:'en-',text:'en- → /ɛn/',desc:'enable = make able',words:['enable','enjoy','enlarge','encourage','endanger','enrich']},
-    {id:'m_anti',sym:'anti-',text:'anti- → /ˈænti/',desc:'antibody = 抗体',words:['antibody','antivirus','antisocial','antifreeze','antiwar','anticlock']},
-    {id:'m_bene',sym:'bene',text:'bene → /ˈbɛnɪ/',desc:'benefit = good deed',words:['benefit','benevolent','benefactor','benediction','benign','beneficial']},
-    {id:'m_mal',sym:'mal',text:'mal → /mæl/',desc:'malfunction = bad function',words:['malfunction','malice','malaria','malignant','malpractice','malevolent']},
-    {id:'m_auto',sym:'auto',text:'auto → /ˈɔːtoʊ/',desc:'automatic = self-moving',words:['automatic','autograph','automobile','autonomy','autobiography','autopilot']},
-    {id:'m_tele',sym:'tele',text:'tele → /ˈtɛlɪ/',desc:'television = far seeing',words:['television','telephone','telescope','telegram','telegraph','teleport']}
-  ]
-},
-{
-  id: 'L0_10',
-  title: '形态学后缀①',
-  sub: 'Morphology',
-  rules: [
-    {id:'m_ful',sym:'-ful',text:'-ful',desc:'hopeful = full of hope',words:['hopeful','colorful','useful','powerful','wonderful','beautiful']},
-    {id:'m_less',sym:'-less',text:'-less',desc:'homeless = without home',words:['homeless','endless','fearless','careless','useless','harmless']},
-    {id:'m_er',sym:'-er',text:'-er',desc:'teacher = one who teaches',words:['teacher','runner','baker','player','writer','worker']},
-    {id:'m_ly',sym:'-ly',text:'-ly → 以...方式(副词)',desc:'quickly = in a quick way',words:['quickly','slowly','happily','sadly','loudly','carefully']},
-    {id:'m_ness',sym:'-ness',text:'-ness',desc:'happiness = state of being happy',words:['happiness','darkness','kindness','sadness','weakness','fitness']},
-    {id:'m_able',sym:'-able',text:'-able',desc:'washable = can be washed',words:['washable','readable','movable','enjoyable','comfortable','believable']},
-    {id:'m_ment',sym:'-ment',text:'-ment',desc:'movement = act of moving',words:['movement','agreement','payment','enjoyment','apartment','equipment']},
-    {id:'m_tion',sym:'-tion',text:'-tion → 动作/状态(名词)',desc:'action = act of doing',words:['action','nation','station','section','question','attention']}
-  ]
-},
-{
-  id: 'L0_11',
-  title: '形态学后缀②',
-  sub: 'Morphology',
-  rules: [
-    {id:'m_ous',sym:'-ous',text:'-ous',desc:'famous = full of fame',words:['famous','dangerous','nervous','curious','serious','various']},
-    {id:'m_ive',sym:'-ive',text:'-ive',desc:'active = tending to act',words:['active','creative','native','positive','attractive','expensive']},
-    {id:'m_ist',sym:'-ist',text:'-ist',desc:'artist = one who does art',words:['artist','scientist','tourist','pianist','dentist','journalist']},
-    {id:'m_al',sym:'-al',text:'-al',desc:'natural = related to nature',words:['natural','personal','national','traditional','accidental','musical']},
-    {id:'m_age',sym:'-age',text:'-age',desc:'marriage = state of being married',words:['marriage','package','village','shortage','storage','courage']},
-    {id:'m_ure',sym:'-ure',text:'-ure',desc:'failure = act of failing',words:['failure','closure','pleasure','pressure','exposure','adventure']},
-    {id:'m_ence',sym:'-ence',text:'-ence',desc:'absence = state of being absent',words:['absence','difference','silence','patience','confidence','violence']},
-    {id:'m_ize',sym:'-ize',text:'-ize',desc:'realize = make real',words:['realize','organize','recognize','apologize','memorize','specialize']}
-  ]
-},
-{
-  id: 'L0_12',
-  title: '形态学词根',
-  sub: 'Morphology',
-  rules: [
-    {id:'m_ject',sym:'ject',text:'ject → 投/扔',desc:'reject = throw back',words:['reject','inject','project','eject','subject','object']},
-    {id:'m_port',sym:'port',text:'port → 携带/运输',desc:'import = carry in',words:['import','export','transport','portable','report','support']},
-    {id:'m_struct',sym:'struct',text:'struct → 建造',desc:'construct = build together',words:['construct','destroy','structure','instruct','obstruct','reconstruct']},
-    {id:'m_spect',sym:'spect',text:'spect → 看',desc:'inspect = look into',words:['inspect','respect','spectator','prospect','suspect','expect']},
-    {id:'m_script',sym:'script',text:'script → 写',desc:'describe = write down',words:['describe','prescribe','manuscript','subscribe','transcript','inscription']},
-    {id:'m_aud',sym:'aud',text:'aud → 听',desc:'audio = related to hearing',words:['audio','audience','auditorium','audition','audible','inaudible']},
-    {id:'m_vid',sym:'vid',text:'vid → 看',desc:'video = related to seeing',words:['video','evidence','provide','visible','vision','visit']},
-    {id:'m_duct',sym:'duct',text:'duct → 引导',desc:'conduct = lead together',words:['conduct','product','reduce','introduce','deduct','educate']},
-    {id:'m_form',sym:'form',text:'form → 形状/形成',desc:'transform = change form',words:['transform','perform','uniform','reform','inform','platform']},
-    {id:'m_miss',sym:'miss',text:'miss → 发送',desc:'transmit = send across',words:['transmit','mission','dismiss','permission','admit','commit']}
-  ]
+  title: '🎓 拼读训练营 · 结业',
+  sub: 'Graduation',
+  desc: '恭喜你完成了自然拼读体系的学习！',
+  transition: true,
+  linkText: '→ 去词根词缀训练营',
+  linkUrl: 'morphology.html',
+  rules: []
 }
 ];
+
 var phState = {
   lessons: {},
   currentLesson: null,
