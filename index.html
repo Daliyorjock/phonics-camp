@@ -440,7 +440,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','PingFang SC'
 
 
   <div id="phonicsCamp" class="phonics-camp">
-    <button class="vowel-chart-fab" onclick="toggleVowelChart()" title="元音对照�?>🔤 元音�?/button>
+    <button class="vowel-chart-fab" onclick="toggleVowelChart()" title="元音对照表">🔤 元音表</button>
 
     
 
@@ -456,29 +456,29 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','PingFang SC'
     <div class="vowel-chart-overlay" id="vowelChartOverlay" onclick="if(event.target===this)closeVowelChart()">
   <div class="vc-card">
     <div class="vc-card-head">
-      <h2>元音对照�?/h2>
-      <button class="vc-card-close" onclick="closeVowelChart()">�?/button>
+      <h2>元音对照表</h2>
+      <button class="vc-card-close" onclick="closeVowelChart()">✕</button>
     </div>
     <div class="vc-card-body" id="vcCardBody"></div>
   </div>
 </div>
 </div>
     <div class="ph-header">
-      <div class="ph-logo-dot"></div><div class="ph-logo-title">拼读训练�?<a class="ph-sublink" onclick="toggleGuide()" style="font-size:13px">📖</a></div>
+      <div class="ph-logo-dot"></div><div class="ph-logo-title">拼读训练营 <a class="ph-sublink" onclick="toggleGuide()" style="font-size:13px">📖</a></div>
       <div class="ph-path-row">
-        <span class="ph-path-step active" id="phPathStep0">🔤 基础�?/span><span class="ph-path-arrow">�?/span>
-        <span class="ph-path-step" id="phPathStep1">🧩 组合</span><span class="ph-path-arrow">�?/span>
-        <span class="ph-path-step" id="phPathStep2">🔗 构词</span><span class="ph-path-arrow">�?/span>
-        <span class="ph-path-step" id="phPathStep3">🎵 短语�?/span>
+        <span class="ph-path-step active" id="phPathStep0">🔤 基础音</span><span class="ph-path-arrow">→</span>
+        <span class="ph-path-step" id="phPathStep1">🧩 组合</span><span class="ph-path-arrow">→</span>
+        <span class="ph-path-step" id="phPathStep2">🔗 构词</span><span class="ph-path-arrow">→</span>
+        <span class="ph-path-step" id="phPathStep3">🎵 短语流</span>
       </div>
       <div class="ph-global-pg">
         <div class="ph-global-bar"><div class="ph-global-fill" id="phGlobalFill"></div></div>
-        <span class="ph-global-label" id="phGlobalLabel">0/6 课完�?/span>
+        <span class="ph-global-label" id="phGlobalLabel">0/6 课完成</span>
       </div>
     </div>
     <div id="phonicsContent"></div>
     <div class="ph-footer">
-      <a class="ph-sublink" onclick="showPhraseFlow()">我已掌握拼读 · 跳过进入短语�?�?/a>
+      <a class="ph-sublink" onclick="showPhraseFlow()">我已掌握拼读 · 跳过进入短语流 →</a>
     </div>
   </div>
   <div id="phraseFlow" style="display:none">
@@ -486,40 +486,40 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','PingFang SC'
     <div class="stats-row" id="statsRow"></div>
     <div id="todayCard"></div>
     <div class="outline-section">
-      <div class="outline-header">📋 课程大纲 · 60天计�?/div>
+      <div class="outline-header">📋 课程大纲 · 60天计划</div>
       <div id="outlineList" class="outline-list"></div>
     </div>
   </div>
-  <a class="back-to-ph" onclick="showPhonicsCamp()" style="display:block;text-align:center;font-size:12px;color:var(--td);padding:6px;cursor:pointer;margin-bottom:4px">�?回到拼读训练�?/a>
+  <a class="back-to-ph" onclick="showPhonicsCamp()" style="display:block;text-align:center;font-size:12px;color:var(--td);padding:6px;cursor:pointer;margin-bottom:4px">← 回到拼读训练营</a>
   <div class="phase" id="listenPhase" style="display:none">
     <div class="drop-zone"><div class="en-line" id="enLine"></div><div class="voice-dot" id="voiceDot"></div></div>
     <div class="pulse idle" id="pulseRing"><span class="pulse-icon" id="pulseIcon">🎵</span></div>
     <div class="transition-text" id="transitionText" style="display:none"></div>
-    <button class="btn-play" id="btnPlay" onclick="togglePlay()">🎧 开始聆�?/button>
+    <button class="btn-play" id="btnPlay" onclick="togglePlay()">🎧 开始聆听</button>
     <div class="time-row"><span class="day" id="dayLabel">Day 1</span><span class="timer" id="timerDisplay">30:00</span></div>
-    <div class="score-bar"><span>�?<span id="scoreOk">0</span></span><span>🔄 <span id="scoreTotal">0</span></span></div>
+    <div class="score-bar"><span>✅ <span id="scoreOk">0</span></span><span>🔄 <span id="scoreTotal">0</span></span></div>
     <div class="dots" id="dotRow"></div>
   </div>
   <div class="phase" id="hearPhase">
     <div class="hear-word" id="hearWord"></div>
-    <div class="hear-sub">先听一遍�?/div>
+    <div class="hear-sub">先听一遍…</div>
     <div class="sb-voice-dot" id="hearDot"></div>
   </div>
   <div class="phase" id="bridgePhase">
-    <div class="sb-title">🔤 拆开看看—�?/div>
+    <div class="sb-title">🔤 拆开看看——</div>
     <div class="sb-word" id="sbWord"></div>
     <div class="sb-chunks" id="sbChunks"></div>
     <div class="sb-frame" id="sbFrame" style="display:none"></div>
     <div class="sb-info" id="sbInfo"></div>
     <div class="sb-btns">
       <button class="sb-btn" onclick="sbSpeakChunk()">🔊 再听</button>
-      <button class="sb-btn" onclick="sbSpeakSlow()">🐢 慢�?/button>
+      <button class="sb-btn" onclick="sbSpeakSlow()">🐢 慢速</button>
       <span class="sb-voice-dot" id="sbVoiceDot"></span>
     </div>
-    <button class="sb-go" onclick="sbGoSpell()">我记住了，继�?�?/button>
+    <button class="sb-go" onclick="sbGoSpell()">我记住了，继续 ›</button>
   </div>
   <div class="phase" id="spellPhase">
-    <div class="spell-title">🔡 逐个字母—�?/div>
+    <div class="spell-title">🔡 逐个字母——</div>
     <div class="spell-word" id="spellWord"></div>
     <div class="spell-letters" id="spellLetters"></div>
     <div class="spell-info" id="spellInfo"></div>
@@ -532,7 +532,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','PingFang SC'
     <div class="recall-bridge" id="recallBridge"></div>
     <div id="recallContent"></div>
     <div class="recall-feedback" id="recallFB"></div>
-    <button class="btn-play" style="margin-top:6px;background:rgba(255,255,255,.05);color:var(--td);border:1px solid rgba(255,255,255,.06)" onclick="skipRecall()">跳过 �?/button>
+    <button class="btn-play" style="margin-top:6px;background:rgba(255,255,255,.05);color:var(--td);border:1px solid rgba(255,255,255,.06)" onclick="skipRecall()">跳过 ›</button>
   </div>
   
 <!-- Vowel Chart Reference -->
@@ -1843,7 +1843,7 @@ window.onerror = function (m, s, l, c, e) {
 
 // ============================================================
 // DeepLingual v12 · Progressive Recall
-// Recog �?Scaffold �?Full Recall 
+// Recog → Scaffold → Full Recall 
 // ============================================================
 
 var S = loadState(),
@@ -1879,9 +1879,9 @@ var PROGRESSION = [[110, 165, 220], [87, 130, 174], [130, 196, 262], [98, 147, 1
 // ============================================================
 // PROGRESSIVE RECALL STATE
 // encounters: how many times the word has been tested
-// 0 encounters �?Stage 1: Recognition (pick from 3)
-// 1 encounter  �?Stage 2: Scaffolded fill-in (H _ l l _)
-// 2+ encounters �?Stage 3: Full recall (_ _ _ _ _)
+// 0 encounters → Stage 1: Recognition (pick from 3)
+// 1 encounter  → Stage 2: Scaffolded fill-in (H _ l l _)
+// 2+ encounters → Stage 3: Full recall (_ _ _ _ _)
 // Data helpers (v16: domain-based, IDs are "D01_3")
 function getPhraseId(d, p) {
   return d + '_' + p;
@@ -1995,7 +1995,7 @@ function getAllPhrases() {
 
 // ============================================================
 // ============================================================
-// PHRASE BANK v2 �?10 domains × 3 phases × 181 phrases
+// PHRASE BANK v2 — 10 domains × 3 phases × 181 phrases
 // ============================================================
 var DOMAINS = [{
   id: 'D01',
@@ -2229,7 +2229,7 @@ var DOMAINS = [{
   }]
 }, {
   id: 'D03',
-  title: '请求与问�?,
+  title: '请求与问路',
   title_en: 'Requests & Directions',
   phase: 'survival',
   cefr: 'A1',
@@ -3596,7 +3596,7 @@ function clearDropZone() {
 // ============================================================
 // AUDIO PLAYBACK - Embedded base64 MP3 (edge-tts, en-US-AriaNeural)
 // ============================================================
-// AUDIO CACHE v2 �?181 phrases embedded as base64 data URIs
+// AUDIO CACHE v2 — 181 phrases embedded as base64 data URIs
 var AUDIO_CACHE = {
   "D01_0": "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qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq",
   "D01_1": "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1TJQ6W85Djgh9S87QQr2YwzgnAYqw43eMGOGWFP4f+pHseZLrkzNqoJ0FNS4ZN0mWHMMeFPXY/DKFRtQIVRRN0mbCyxZmSsx//NkxO4fO/oMyFBGCZHnqqxtUaqsMsqZKsZVWOJ1ww/IkVUFgAow5Doowarf6pqYRGDDt0VP9iorap2MmUEDpH+atLLLKCBOhkatbLLLLY5GXz//5L/////b5GTBQQKyywKGBB0cjJr+1llBo5GrBQUeWGXykasFDCSzLi8qf/uVJxpRVxbf//5v80aW1s/7//NkxPQiBBIAAEGGvTu25s0acVcO192a43KNOPVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxO8e5DmsCCjNeFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV",
@@ -3869,21 +3869,21 @@ function cleanupTTS() {
 // ============================================================
 var VOWELS_SET = new Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']);
 // ============================================================
-// PHONICS RULES �?Comprehensive, organized by category
+// PHONICS RULES — Comprehensive, organized by category
 // Format: {re, sound, tip, cat}
 // cat: 'cons','vowel','rctl','silent','blend','ending'
 // ============================================================
 var DIGRAPHS = [
-// ── Consonant Digraphs (2 letters �?1 fixed sound) ──
+// ── Consonant Digraphs (2 letters → 1 fixed sound) ──
 {
   re: /th/gi,
   sound: '/θ/ /ð/',
-  tip: '舌尖轻触上齿�?,
+  tip: '舌尖轻触上齿缝',
   cat: 'cons'
 }, {
   re: /sh/gi,
   sound: '/ʃ/',
-  tip: '像说"嘘�?',
+  tip: '像说"嘘—"',
   cat: 'cons'
 }, {
   re: /ch/gi,
@@ -3893,17 +3893,17 @@ var DIGRAPHS = [
 }, {
   re: /ph/gi,
   sound: '/f/',
-  tip: 'ph = f �?,
+  tip: 'ph = f 音',
   cat: 'cons'
 }, {
   re: /wh(?=[aeiou])/gi,
   sound: '/w/ /h/',
-  tip: '是不�?�?音看�?,
+  tip: '是不是"呼"音看词',
   cat: 'cons'
 }, {
   re: /ng/gi,
   sound: '/ŋ/',
-  tip: '鼻腔�? 舌根�?,
+  tip: '鼻腔音, 舌根抬',
   cat: 'cons'
 }, {
   re: /ck/gi,
@@ -3913,7 +3913,7 @@ var DIGRAPHS = [
 }, {
   re: /dge/gi,
   sound: '/dʒ/',
-  tip: '读作"�?(bridge)',
+  tip: '读作"知"(bridge)',
   cat: 'cons'
 }, {
   re: /tch/gi,
@@ -3925,49 +3925,49 @@ var DIGRAPHS = [
 {
   re: /\bkn/gi,
   sound: '/n/',
-  tip: 'k不发�?(know)',
+  tip: 'k不发音 (know)',
   cat: 'silent'
 }, {
   re: /\bwr/gi,
   sound: '/r/',
-  tip: 'w不发�?(write)',
+  tip: 'w不发音 (write)',
   cat: 'silent'
 }, {
   re: /mb\b/gi,
   sound: '/m/',
-  tip: 'b不发�?(climb)',
+  tip: 'b不发音 (climb)',
   cat: 'silent'
 }, {
   re: /\bgn/gi,
   sound: '/n/',
-  tip: 'g不发�?(gnaw)',
+  tip: 'g不发音 (gnaw)',
   cat: 'silent'
 }, {
   re: /gh(?![aeiou])/gi,
-  sound: '/f/ 或无�?,
-  tip: '词尾常无�?laugh=f)',
+  sound: '/f/ 或无声',
+  tip: '词尾常无声(laugh=f)',
   cat: 'silent'
 }, {
   re: /bt\b/gi,
   sound: '/t/',
-  tip: 'b不发�?(debt)',
+  tip: 'b不发音 (debt)',
   cat: 'silent'
 }, {
   re: /mn\b/gi,
   sound: '/m/',
-  tip: 'n不发�?(autumn)',
+  tip: 'n不发音 (autumn)',
   cat: 'silent'
 },
-// ── Vowel Digraphs (2 vowels �?1 sound) ──
+// ── Vowel Digraphs (2 vowels → 1 sound) ──
 {
   re: /ee/gi,
   sound: '/iː/',
-  tip: '长音"咿�?',
+  tip: '长音"咿—"',
   cat: 'vowel'
 }, {
   re: /ea/gi,
   sound: '/iː/ /e/',
-  tip: '常长�?偶短�?bread)',
+  tip: '常长音,偶短音(bread)',
   cat: 'vowel'
 }, {
   re: /ai/gi,
@@ -3982,7 +3982,7 @@ var DIGRAPHS = [
 }, {
   re: /oa/gi,
   sound: '/oʊ/',
-  tip: '圆唇"欧�?(boat)',
+  tip: '圆唇"欧—"(boat)',
   cat: 'vowel'
 }, {
   re: /oe/gi,
@@ -3992,22 +3992,22 @@ var DIGRAPHS = [
 }, {
   re: /ie/gi,
   sound: '/aɪ/ /iː/',
-  tip: '�?�?(pie)�?�?(field)',
+  tip: '常"爱"(pie)或"咿"(field)',
   cat: 'vowel'
 }, {
   re: /oo/gi,
   sound: '/uː/ /ʊ/',
-  tip: '"呜�?或短"�?',
+  tip: '"呜—"或短"呜"',
   cat: 'vowel'
 }, {
   re: /ou/gi,
   sound: '/aʊ/ /uː/',
-  tip: '"啊呜"�?呜�?',
+  tip: '"啊呜"或"呜—"',
   cat: 'vowel'
 }, {
   re: /ow/gi,
   sound: '/aʊ/ /oʊ/',
-  tip: '"啊呜"�?欧�?',
+  tip: '"啊呜"或"欧—"',
   cat: 'vowel'
 }, {
   re: /oi/gi,
@@ -4022,7 +4022,7 @@ var DIGRAPHS = [
 }, {
   re: /au/gi,
   sound: '/ɔː/',
-  tip: '"噢�?(auto)',
+  tip: '"噢—"(auto)',
   cat: 'vowel'
 }, {
   re: /aw/gi,
@@ -4032,17 +4032,17 @@ var DIGRAPHS = [
 }, {
   re: /ew/gi,
   sound: '/juː/ /uː/',
-  tip: '"优�?�?呜�?',
+  tip: '"优—"或"呜—"',
   cat: 'vowel'
 }, {
   re: /ue/gi,
   sound: '/uː/ /juː/',
-  tip: '词尾�?呜�?(blue)',
+  tip: '词尾常"呜—"(blue)',
   cat: 'vowel'
 }, {
   re: /ui/gi,
   sound: '/uː/ /juː/',
-  tip: '"呜�?(fruit)',
+  tip: '"呜—"(fruit)',
   cat: 'vowel'
 },
 // ── R-Controlled Vowels ──
@@ -4076,12 +4076,12 @@ var DIGRAPHS = [
 {
   re: /tion/gi,
   sound: '/ʃən/',
-  tip: '"�?(station)',
+  tip: '"申"(station)',
   cat: 'ending'
 }, {
   re: /sion/gi,
   sound: '/ʒən/ /ʃən/',
-  tip: '"�?�?�?',
+  tip: '"忍"或"申"',
   cat: 'ending'
 }, {
   re: /ture/gi,
@@ -4091,17 +4091,17 @@ var DIGRAPHS = [
 }, {
   re: /sure/gi,
   sound: '/ʒər/ /ʃər/',
-  tip: '"热儿"�?设儿"',
+  tip: '"热儿"或"设儿"',
   cat: 'ending'
 }, {
   re: /cial/gi,
   sound: '/ʃəl/',
-  tip: '"�?(special)',
+  tip: '"收"(special)',
   cat: 'ending'
 }, {
   re: /tial/gi,
   sound: '/ʃəl/',
-  tip: '"�?(initial)',
+  tip: '"收"(initial)',
   cat: 'ending'
 }, {
   re: /cious/gi,
@@ -4138,7 +4138,7 @@ var DIGRAPHS = [
 }, {
   re: /\bdr/gi,
   sound: '/dr/',
-  tip: 'd+r 快速连�?,
+  tip: 'd+r 快速连读',
   cat: 'blend'
 }, {
   re: /\bfl/gi,
@@ -4173,7 +4173,7 @@ var DIGRAPHS = [
 }, {
   re: /\bsc/gi,
   sound: '/sk/ /s/',
-  tip: '"丝克"�?�?',
+  tip: '"丝克"或"丝"',
   cat: 'blend'
 }, {
   re: /\bsk/gi,
@@ -4213,7 +4213,7 @@ var DIGRAPHS = [
 }, {
   re: /\btr/gi,
   sound: '/tr/',
-  tip: 't+r 快速连�?,
+  tip: 't+r 快速连读',
   cat: 'blend'
 }, {
   re: /\btw/gi,
@@ -4223,7 +4223,7 @@ var DIGRAPHS = [
 }];
 
 // ============================================================
-// AFFIXES �?High-frequency prefixes & suffixes (A1-B1)
+// AFFIXES — High-frequency prefixes & suffixes (A1-B1)
 // Format: {re, type, meaning, examples}
 // ============================================================
 var AFFIXES = [
@@ -4236,7 +4236,7 @@ var AFFIXES = [
 }, {
   re: /\bre(?!d|st|ad)/gi,
   type: 'prefix',
-  meaning: '�?重复 again',
+  meaning: '再/重复 again',
   eg: 'redo, rewrite'
 }, {
   re: /\bpre/gi,
@@ -4296,27 +4296,27 @@ var AFFIXES = [
 }, {
   re: /\bsemi/gi,
   type: 'prefix',
-  meaning: '一�?half',
+  meaning: '一半 half',
   eg: 'semifinal'
 }, {
   re: /\bnon/gi,
   type: 'prefix',
-  meaning: '�?�?not',
+  meaning: '非/不 not',
   eg: 'nonstop, nonsense'
 }, {
   re: /\bim(?=[mp])/gi,
   type: 'prefix',
-  meaning: '否定 not (p�?',
+  meaning: '否定 not (p前)',
   eg: 'impossible'
 }, {
   re: /\bil(?=l)/gi,
   type: 'prefix',
-  meaning: '否定 not (l�?',
+  meaning: '否定 not (l前)',
   eg: 'illegal'
 }, {
   re: /\bir(?=r)/gi,
   type: 'prefix',
-  meaning: '否定 not (r�?',
+  meaning: '否定 not (r前)',
   eg: 'irregular'
 }, {
   re: /\bin(?=[^aeiou])/gi,
@@ -4328,22 +4328,22 @@ var AFFIXES = [
 {
   re: /er\b/gi,
   type: 'suffix',
-  meaning: '�?…�?person who',
+  meaning: '人/…者 person who',
   eg: 'teacher, worker'
 }, {
   re: /or\b/gi,
   type: 'suffix',
-  meaning: '�?…�?person who',
+  meaning: '人/…者 person who',
   eg: 'actor, visitor'
 }, {
   re: /ment\b/gi,
   type: 'suffix',
-  meaning: '状�?结果 state',
+  meaning: '状态/结果 state',
   eg: 'enjoyment, payment'
 }, {
   re: /ness\b/gi,
   type: 'suffix',
-  meaning: '性质/状�?quality',
+  meaning: '性质/状态 quality',
   eg: 'kindness, darkness'
 }, {
   re: /ful\b/gi,
@@ -4368,17 +4368,17 @@ var AFFIXES = [
 }, {
   re: /ous\b/gi,
   type: 'suffix',
-  meaning: '有…性质�?full of',
+  meaning: '有…性质的 full of',
   eg: 'dangerous, famous'
 }, {
   re: /ive\b/gi,
   type: 'suffix',
-  meaning: '有…倾向�?tending',
+  meaning: '有…倾向的 tending',
   eg: 'active, creative'
 }, {
   re: /al\b/gi,
   type: 'suffix',
-  meaning: '…的 (形容�?',
+  meaning: '…的 (形容词)',
   eg: 'personal, national'
 }, {
   re: /ly\b/gi,
@@ -4388,7 +4388,7 @@ var AFFIXES = [
 }, {
   re: /en\b/gi,
   type: 'suffix',
-  meaning: '使变�?to make',
+  meaning: '使变成 to make',
   eg: 'widen, shorten'
 }, {
   re: /ize\b|ise\b/gi,
@@ -4398,39 +4398,39 @@ var AFFIXES = [
 }, {
   re: /ship\b/gi,
   type: 'suffix',
-  meaning: '关系/状�?relation',
+  meaning: '关系/状态 relation',
   eg: 'friendship, leadership'
 }, {
   re: /hood\b/gi,
   type: 'suffix',
-  meaning: '状�?时期 state',
+  meaning: '状态/时期 state',
   eg: 'childhood, neighborhood'
 }, {
   re: /ish\b/gi,
   type: 'suffix',
-  meaning: '有点�?somewhat',
+  meaning: '有点… somewhat',
   eg: 'childish, reddish'
 }, {
   re: /ward\b/gi,
   type: 'suffix',
-  meaning: '朝…方�?toward',
+  meaning: '朝…方向 toward',
   eg: 'forward, backward'
 }];
 
 // ============================================================
-// PHONICS BOOT CAMP �?L0 Alphabet Foundations
+// PHONICS BOOT CAMP — L0 Alphabet Foundations
 // ============================================================
 var PHONICS_LESSONS = [
 {
   id: 'L0_1',
-  title: '短元�?a, e, i, o, u',
+  title: '短元音 a, e, i, o, u',
   sub: 'Short Vowels',
   rules: [
-    {id:'short_a',sym:'a',text:'a �?/æ/',desc:'嘴巴张最大，�?�?但嘴更开',words:['apple','cat','bag','map','sad','hat','black']},
-    {id:'short_e',sym:'e',text:'e �?/e/',desc:'短促�?�?，嘴角向两边�?,words:['egg','bed','red','desk','pen','leg','net']},
-    {id:'short_i',sym:'i',text:'i �?/ɪ/',desc:'�?�?，嘴不要张太�?,words:['pig','fish','dish','ship','six','big','win']},
-    {id:'short_o',sym:'o',text:'o �?/ɒ/',desc:'嘴巴圆形发音类似"�?',words:['dog','pot','top','log','fox','box','hot']},
-    {id:'short_u',sym:'u',text:'u �?/ʌ/',desc:'放松张口，像"�?但更�?,words:['cup','sun','bus','run','nut','duck','mud']}
+    {id:'short_a',sym:'a',text:'a → /æ/',desc:'嘴巴张最大，像"哎"但嘴更开',words:['apple','cat','bag','map','sad','hat','black']},
+    {id:'short_e',sym:'e',text:'e → /e/',desc:'短促的"诶"，嘴角向两边拉',words:['egg','bed','red','desk','pen','leg','net']},
+    {id:'short_i',sym:'i',text:'i → /ɪ/',desc:'短"衣"，嘴不要张太大',words:['pig','fish','dish','ship','six','big','win']},
+    {id:'short_o',sym:'o',text:'o → /ɒ/',desc:'嘴巴圆形发音类似"奥"',words:['dog','pot','top','log','fox','box','hot']},
+    {id:'short_u',sym:'u',text:'u → /ʌ/',desc:'放松张口，像"啊"但更短',words:['cup','sun','bus','run','nut','duck','mud']}
   ]
 },
 {
@@ -4438,10 +4438,10 @@ var PHONICS_LESSONS = [
   title: '魔法 E Magic E',
   sub: 'Silent E',
   rules: [
-    {id:'magic_a',sym:'a_e',text:'a_e �?/eɪ/',desc:'e 不发音，a 读字母音"诶一"',words:['cake','lake','name','gate','face','game','made','same']},
-    {id:'magic_i',sym:'i_e',text:'i_e �?/aɪ/',desc:'e 不发音，i 读字母音"�?',words:['bike','like','kite','five','ride','time','nine']},
-    {id:'magic_o',sym:'o_e',text:'o_e �?/əʊ/',desc:'e 不发音，o 读字母音"�?',words:['bone','home','rope','nose','hope','code','note']},
-    {id:'magic_u',sym:'u_e',text:'u_e �?/juː/',desc:'e 不发音，u 读字母音"�?',words:['cube','tube','huge','fuse','mute','cute','use']}
+    {id:'magic_a',sym:'a_e',text:'a_e → /eɪ/',desc:'e 不发音，a 读字母音"诶一"',words:['cake','lake','name','gate','face','game','made','same']},
+    {id:'magic_i',sym:'i_e',text:'i_e → /aɪ/',desc:'e 不发音，i 读字母音"爱"',words:['bike','like','kite','five','ride','time','nine']},
+    {id:'magic_o',sym:'o_e',text:'o_e → /əʊ/',desc:'e 不发音，o 读字母音"欧"',words:['bone','home','rope','nose','hope','code','note']},
+    {id:'magic_u',sym:'u_e',text:'u_e → /juː/',desc:'e 不发音，u 读字母音"优"',words:['cube','tube','huge','fuse','mute','cute','use']}
   ]
 },
 {
@@ -4449,34 +4449,34 @@ var PHONICS_LESSONS = [
   title: '元音组合 Vowel Teams',
   sub: 'Vowel Teams',
   rules: [
-    {id:'vt_ee',sym:'ee',text:'ee �?/iː/',desc:'�?衣�?',words:['bee','see','tree','green','sleep','three','need']},
-    {id:'vt_ea',sym:'ea',text:'ea �?/iː/ �?/e/',desc:'常读�?衣�?�?meet，也可读�?�?',words:['read','eat','please','tea','beach','bread','head']},
-    {id:'vt_ai',sym:'ai',text:'ai �?/eɪ/',desc:'读字母A�?诶�?',words:['rain','wait','train','again','main','email','fail']},
-    {id:'vt_oa',sym:'oa',text:'oa �?/əʊ/',desc:'�?欧�?，o长a不发�?,words:['boat','road','coat','goat','goal','toast']},
-    {id:'vt_oo',sym:'oo',text:'oo �?/uː/ /ʊ/',desc:'�?呜�?(food) 或短"�?(book)',words:['food','room','school','good','book','look','cook']},
-    {id:'vt_igh',sym:'igh',text:'igh �?/aɪ/',desc:'i不发音，gh让i发长�?�?',words:['night','light','right','high','bright','fight']},
-    {id:'vt_ay',sym:'ay',text:'ay �?/eɪ/',desc:'词尾ay发字母A的音"诶一"',words:['day','play','way','stay','say','may','gray']},
-    {id:'vt_ey',sym:'ey',text:'ey �?/iː/�?eɪ/',desc:'词尾ey通常发长�?�?',words:['key','monkey','money','honey','valley','donkey']},
-    {id:'vt_aw',sym:'aw',text:'aw �?/ɔː/',desc:'aw�?�?口型的延长音',words:['saw','law','draw','straw','claw','paw']},
-    {id:'vt_au',sym:'au',text:'au �?/ɔː/',desc:'和aw一样，"�?',words:['author','autumn','launch','fault','sauce','pause']},
-    {id:'vt_ew',sym:'ew',text:'ew �?/juː/',desc:'�?�?的延�?,words:['new','few','knew','chew','stew','blew']},
-    {id:'vt_ue',sym:'ue',text:'ue �?/uː/�?juː/',desc:'词尾ue�?�?�?�?',words:['blue','true','glue','clue','rescue','value']},
-    {id:'vt_y',sym:'y',text:'词尾y �?/iː/',desc:'y在词尾发�?�?',words:['baby','happy','sunny','funny','puppy','candy','pretty']}
+    {id:'vt_ee',sym:'ee',text:'ee → /iː/',desc:'长"衣—"',words:['bee','see','tree','green','sleep','three','need']},
+    {id:'vt_ea',sym:'ea',text:'ea → /iː/ 或 /e/',desc:'常读长"衣—"像 meet，也可读短"诶"',words:['read','eat','please','tea','beach','bread','head']},
+    {id:'vt_ai',sym:'ai',text:'ai → /eɪ/',desc:'读字母A音"诶—"',words:['rain','wait','train','again','main','email','fail']},
+    {id:'vt_oa',sym:'oa',text:'oa → /əʊ/',desc:'读"欧—"，o长a不发音',words:['boat','road','coat','goat','goal','toast']},
+    {id:'vt_oo',sym:'oo',text:'oo → /uː/ /ʊ/',desc:'长"呜—"(food) 或短"呜"(book)',words:['food','room','school','good','book','look','cook']},
+    {id:'vt_igh',sym:'igh',text:'igh → /aɪ/',desc:'i不发音，gh让i发长音"爱"',words:['night','light','right','high','bright','fight']},
+    {id:'vt_ay',sym:'ay',text:'ay → /eɪ/',desc:'词尾ay发字母A的音"诶一"',words:['day','play','way','stay','say','may','gray']},
+    {id:'vt_ey',sym:'ey',text:'ey → /iː/或/eɪ/',desc:'词尾ey通常发长音"衣"',words:['key','monkey','money','honey','valley','donkey']},
+    {id:'vt_aw',sym:'aw',text:'aw → /ɔː/',desc:'aw发"奥"口型的延长音',words:['saw','law','draw','straw','claw','paw']},
+    {id:'vt_au',sym:'au',text:'au → /ɔː/',desc:'和aw一样，"奥"',words:['author','autumn','launch','fault','sauce','pause']},
+    {id:'vt_ew',sym:'ew',text:'ew → /juː/',desc:'发"优"的延长',words:['new','few','knew','chew','stew','blew']},
+    {id:'vt_ue',sym:'ue',text:'ue → /uː/或/juː/',desc:'词尾ue，"乌"或"优"',words:['blue','true','glue','clue','rescue','value']},
+    {id:'vt_y',sym:'y',text:'词尾y → /iː/',desc:'y在词尾发挥"衣"',words:['baby','happy','sunny','funny','puppy','candy','pretty']}
   ]
 },
 {
   id: 'L0_4',
-  title: 'R 控元�?,
+  title: 'R 控元音',
   sub: 'R-Controlled',
   rules: [
-    {id:'r_ar',sym:'ar',text:'ar �?/ɑːr/',desc:'"啊—儿"，嘴张大再卷�?,words:['car','far','star','arm','park','dark','garden']},
-    {id:'r_er',sym:'er',text:'er �?/ɜːr/',desc:'�?呃儿"',words:['her','germ','fern','term','verb','person','perfect']},
-    {id:'r_ir',sym:'ir',text:'ir �?/ɜːr/',desc:'和er一样读"呃儿"',words:['bird','girl','dirt','first','shirt','birth','circle']},
-    {id:'r_or',sym:'or',text:'or �?/ɔːr/',desc:'卷舌"奥儿"',words:['for','born','corn','horse','storm','fork','short']},
-    {id:'r_ur',sym:'ur',text:'ur �?/ɜːr/',desc:'也是"呃儿"',words:['fur','curl','turn','burn','surf','purple','nurse']},
-    {id:'r_ear',sym:'ear',text:'ear �?/ɪr/�?ɜːr/',desc:'ear可以�?衣儿"�?呃儿"',words:['ear','hear','near','year','clear','fear','bear']},
-    {id:'r_air',sym:'air',text:'air �?/er/',desc:'air发了"哎儿"的音',words:['air','hair','pair','chair','stair','fair']},
-    {id:'r_eer',sym:'eer',text:'eer �?/ɪr/',desc:'和ear类似，发"衣儿"',words:['deer','cheer','steer','peer','beer','career']}
+    {id:'r_ar',sym:'ar',text:'ar → /ɑːr/',desc:'"啊—儿"，嘴张大再卷舌',words:['car','far','star','arm','park','dark','garden']},
+    {id:'r_er',sym:'er',text:'er → /ɜːr/',desc:'轻"呃儿"',words:['her','germ','fern','term','verb','person','perfect']},
+    {id:'r_ir',sym:'ir',text:'ir → /ɜːr/',desc:'和er一样读"呃儿"',words:['bird','girl','dirt','first','shirt','birth','circle']},
+    {id:'r_or',sym:'or',text:'or → /ɔːr/',desc:'卷舌"奥儿"',words:['for','born','corn','horse','storm','fork','short']},
+    {id:'r_ur',sym:'ur',text:'ur → /ɜːr/',desc:'也是"呃儿"',words:['fur','curl','turn','burn','surf','purple','nurse']},
+    {id:'r_ear',sym:'ear',text:'ear → /ɪr/或/ɜːr/',desc:'ear可以发"衣儿"或"呃儿"',words:['ear','hear','near','year','clear','fear','bear']},
+    {id:'r_air',sym:'air',text:'air → /er/',desc:'air发了"哎儿"的音',words:['air','hair','pair','chair','stair','fair']},
+    {id:'r_eer',sym:'eer',text:'eer → /ɪr/',desc:'和ear类似，发"衣儿"',words:['deer','cheer','steer','peer','beer','career']}
   ]
 },
 {
@@ -4484,10 +4484,10 @@ var PHONICS_LESSONS = [
   title: '特殊模式 & 元音组合进阶',
   sub: 'Special Patterns',
   rules: [
-    {id:'silent_e',sym:'e',text:'e �?/iː/ /ə/',desc:'词尾 e 弱读或发"�?',words:['she','he','we','me','be']},
-    {id:'schwa',sym:'ə',text:'ə �?轻读',desc:'非重读元音变模糊�?�?',words:['sofa','banana','panda','about','around','ago','afraid']},
-    {id:'sp_ought',sym:'ought',text:'ought �?/ɔːt/',desc:'ought固定�?奥特"',words:['thought','bought','brought','fought','sought']},
-    {id:'sp_all',sym:'all',text:'all �?/ɔːl/',desc:'all�?奥尔"',words:['all','ball','tall','small','fall','call','wall']}
+    {id:'silent_e',sym:'e',text:'e → /iː/ /ə/',desc:'词尾 e 弱读或发"衣"',words:['she','he','we','me','be']},
+    {id:'schwa',sym:'ə',text:'ə → 轻读',desc:'非重读元音变模糊的"呃"',words:['sofa','banana','panda','about','around','ago','afraid']},
+    {id:'sp_ought',sym:'ought',text:'ought → /ɔːt/',desc:'ought固定发"奥特"',words:['thought','bought','brought','fought','sought']},
+    {id:'sp_all',sym:'all',text:'all → /ɔːl/',desc:'all发"奥尔"',words:['all','ball','tall','small','fall','call','wall']}
   ]
 },
 {
@@ -4495,18 +4495,18 @@ var PHONICS_LESSONS = [
   title: '辅音发音',
   sub: 'Consonants',
   rules: [
-    {id:'c_ch',sym:'ch',text:'ch �?/tʃ/',desc:'�?�?的声�?,words:['chat','chin','chip','chess','chicken','church','lunch']},
-    {id:'c_sh',sym:'sh',text:'sh �?/ʃ/',desc:'�?�?的声�?,words:['she','ship','fish','dish','wish','brush','shop']},
-    {id:'c_th',sym:'th',text:'th �?/θ/ /ð/',desc:'舌尖轻触上齿',words:['thin','think','three','thirty','this','that','them','tooth']},
-    {id:'c_ph',sym:'ph',text:'ph �?/f/',desc:'ph �?/f/，和 f 一�?,words:['phone','photo','dolphin','elephant','trophy']},
-    {id:'c_tch',sym:'tch',text:'tch �?/tʃ/',desc:'等于ch，词尾常用tch',words:['catch','match','watch','latch','scratch','patch']},
-    {id:'c_dge',sym:'dge',text:'dge �?/dʒ/',desc:'等于j音，短元音后常用',words:['bridge','edge','judge','badge','ledge','ridge']},
-    {id:'c_wh',sym:'wh',text:'wh �?/w/ �?/hw/',desc:'wh通常读w，某些方言带h�?,words:['what','when','where','which','white','wheel','whale']},
-    {id:'c_kn',sym:'kn',text:'kn �?/n/',desc:'k不发音，只读n',words:['knight','knee','know','knock','knife','knot']},
-    {id:'c_wr',sym:'wr',text:'wr �?/r/',desc:'w不发音，只读r',words:['write','wrong','wrist','wrap','wreck','wrench']},
-    {id:'c_soft',sym:'c',text:'软c �?/s/',desc:'c在i, e, y前读/s/',words:['city','ice','face','race','cycle','circle','cent']},
-    {id:'g_soft',sym:'g',text:'软g �?/dʒ/',desc:'g在i, e, y前有时读/j/',words:['giant','gym','gem','cage','page','age']},
-    {id:'c_s_voice',sym:'s',text:'s有声 �?/z/',desc:'元音间的s常读/z/',words:['rose','music','visit','present','easy','nose']}
+    {id:'c_ch',sym:'ch',text:'ch → /tʃ/',desc:'像"吃"的声母',words:['chat','chin','chip','chess','chicken','church','lunch']},
+    {id:'c_sh',sym:'sh',text:'sh → /ʃ/',desc:'像"狮"的声母',words:['she','ship','fish','dish','wish','brush','shop']},
+    {id:'c_th',sym:'th',text:'th → /θ/ /ð/',desc:'舌尖轻触上齿',words:['thin','think','three','thirty','this','that','them','tooth']},
+    {id:'c_ph',sym:'ph',text:'ph → /f/',desc:'ph 读 /f/，和 f 一样',words:['phone','photo','dolphin','elephant','trophy']},
+    {id:'c_tch',sym:'tch',text:'tch → /tʃ/',desc:'等于ch，词尾常用tch',words:['catch','match','watch','latch','scratch','patch']},
+    {id:'c_dge',sym:'dge',text:'dge → /dʒ/',desc:'等于j音，短元音后常用',words:['bridge','edge','judge','badge','ledge','ridge']},
+    {id:'c_wh',sym:'wh',text:'wh → /w/ 或 /hw/',desc:'wh通常读w，某些方言带h音',words:['what','when','where','which','white','wheel','whale']},
+    {id:'c_kn',sym:'kn',text:'kn → /n/',desc:'k不发音，只读n',words:['knight','knee','know','knock','knife','knot']},
+    {id:'c_wr',sym:'wr',text:'wr → /r/',desc:'w不发音，只读r',words:['write','wrong','wrist','wrap','wreck','wrench']},
+    {id:'c_soft',sym:'c',text:'软c → /s/',desc:'c在i, e, y前读/s/',words:['city','ice','face','race','cycle','circle','cent']},
+    {id:'g_soft',sym:'g',text:'软g → /dʒ/',desc:'g在i, e, y前有时读/j/',words:['giant','gym','gem','cage','page','age']},
+    {id:'c_s_voice',sym:'s',text:'s有声 → /z/',desc:'元音间的s常读/z/',words:['rose','music','visit','present','easy','nose']}
   ]
 },
 {
@@ -4514,23 +4514,23 @@ var PHONICS_LESSONS = [
   title: '辅音连缀 & 特殊辅音',
   sub: 'Blends',
   rules: [
-    {id:'bl_tr',sym:'tr',text:'tr �?/tr/',desc:'t和r快速连�?,words:['tree','train','trip','truck','try','true']},
-    {id:'bl_dr',sym:'dr',text:'dr �?/dr/',desc:'d和r快速连�?,words:['drop','drive','dress','drum','dream','dragon']},
-    {id:'bl_br',sym:'br',text:'br �?/br/',desc:'b和r快速连�?,words:['bring','brown','break','brain','bridge','brush']},
-    {id:'bl_gr',sym:'gr',text:'gr �?/gr/',desc:'g和r快速连�?,words:['green','great','grow','grain','grass','group']},
-    {id:'bl_cr',sym:'cr',text:'cr �?/kr/',desc:'c和r快速连�?,words:['cry','cross','crab','cream','crack','crown']},
-    {id:'bl_fr',sym:'fr',text:'fr �?/fr/',desc:'f和r快速连�?,words:['friend','free','frog','fruit','frame','from']},
-    {id:'bl_pr',sym:'pr',text:'pr �?/pr/',desc:'p和r快速连�?,words:['price','print','proud','press','problem','prize']},
-    {id:'ow_tail',sym:'ow',text:'词尾ow �?/əʊ/',desc:'词尾ow通常�?�?',words:['snow','grow','low','slow','show','know','yellow']}
+    {id:'bl_tr',sym:'tr',text:'tr → /tr/',desc:'t和r快速连读',words:['tree','train','trip','truck','try','true']},
+    {id:'bl_dr',sym:'dr',text:'dr → /dr/',desc:'d和r快速连读',words:['drop','drive','dress','drum','dream','dragon']},
+    {id:'bl_br',sym:'br',text:'br → /br/',desc:'b和r快速连读',words:['bring','brown','break','brain','bridge','brush']},
+    {id:'bl_gr',sym:'gr',text:'gr → /gr/',desc:'g和r快速连读',words:['green','great','grow','grain','grass','group']},
+    {id:'bl_cr',sym:'cr',text:'cr → /kr/',desc:'c和r快速连读',words:['cry','cross','crab','cream','crack','crown']},
+    {id:'bl_fr',sym:'fr',text:'fr → /fr/',desc:'f和r快速连读',words:['friend','free','frog','fruit','frame','from']},
+    {id:'bl_pr',sym:'pr',text:'pr → /pr/',desc:'p和r快速连读',words:['price','print','proud','press','problem','prize']},
+    {id:'ow_tail',sym:'ow',text:'词尾ow → /əʊ/',desc:'词尾ow通常发"欧"',words:['snow','grow','low','slow','show','know','yellow']}
   ]
 },
 {
   id: 'L0_8',
-  title: '🎓 拼读训练�?· 结业',
+  title: '🎓 拼读训练营 · 结业',
   sub: 'Graduation',
   desc: '恭喜你完成了自然拼读体系的学习！',
   transition: true,
-  linkText: '�?去词根词缀训练�?,
+  linkText: '→ 去词根词缀训练营',
   linkUrl: 'morphology.html',
   rules: []
 }
@@ -4590,7 +4590,7 @@ function exportProgress() {
   a.href = URL.createObjectURL(blob);
   a.download = 'deeplingual-backup-' + (profileName || 'anon') + '.json';
   a.click();
-  showToast('📤 进度已导�?);
+  showToast('📤 进度已导出');
 }
 function importProgress() {
   var input = document.createElement('input');
@@ -4612,9 +4612,9 @@ function importProgress() {
         }
         loadPhState();
         renderCurrentRule();
-        showToast('📥 进度已导�?);
+        showToast('📥 进度已导入');
       } catch (e) {
-        showToast('�?导入失败，文件格式错�?);
+        showToast('❌ 导入失败，文件格式错误');
       }
     };
     reader.readAsText(file);
@@ -4622,7 +4622,7 @@ function importProgress() {
   input.click();
 }
 function resetProgress() {
-  if (!confirm('确定要清除所有学习记录吗？此操作不可撤销�?)) return;
+  if (!confirm('确定要清除所有学习记录吗？此操作不可撤销。')) return;
   localStorage.removeItem('dlv19_phonics');
   localStorage.removeItem('dlv16');
   phState = {
@@ -4631,7 +4631,7 @@ function resetProgress() {
     currentRuleIdx: 0
   };
   renderCurrentRule();
-  showToast('🔄 记录已清�?);
+  showToast('🔄 记录已清除');
 }
 function showToast(msg) {
   var t = document.createElement('div');
@@ -4731,9 +4731,9 @@ function renderRuleCard() {
     h += '<div style="font-size:13px;color:var(--td);margin-bottom:16px">' + (l.desc||'') + '</div>';
     h += '<a href="' + l.linkUrl + '" class="grad-btn">' + l.linkText + '</a>';
 
-    h += '<div style="font-size:12px;color:var(--td);margin-top:14px">右下�?📖 可随时查看元音表</div>';
+    h += '<div style="font-size:12px;color:var(--td);margin-top:14px">右下角 📖 可随时查看元音表</div>';
     h += '</div>';
-    document.getElementById('phonicsContent').innerHTML = h;
+    document.getElementById('ruleCard').innerHTML = h;
     var nav = document.getElementById('ruleNav');
     if (nav) nav.style.display = 'none';
     return;
@@ -4746,7 +4746,7 @@ function renderRuleCard() {
   document.getElementById('phGlobalFill').style.width = globalPct + '%';
   var realTotal = 0;
   PHONICS_LESSONS.forEach(function(l){if(!l.transition)realTotal++;});
-  document.getElementById('phGlobalLabel').textContent = completedLessons + '/' + realTotal + ' 课完�?;
+  document.getElementById('phGlobalLabel').textContent = completedLessons + '/' + realTotal + ' 课完成';
   ['phPathStep0', 'phPathStep1', 'phPathStep2', 'phPathStep3'].forEach(function (id, i) {
     var el = document.getElementById(id);
     el.classList.toggle('active', i === 0);
@@ -4829,10 +4829,10 @@ function renderRuleCard() {
       'm_tri': 0
     };
     var g = secMap[r.id];
-    var labels = ['', '🗂�?前缀�?, '🗂�?后缀�?, '🗂�?词根�?];
+    var labels = ['', '🗂️ 前缀篇', '🗂️ 后缀篇', '🗂️ 词根篇'];
     if (g && labels[g]) sectionBanner = '<div style="background:var(--bg2);border-radius:10px;padding:8px 12px;margin-bottom:6px;font-size:13px;font-weight:700;color:var(--t);text-align:center">' + labels[g] + '</div>';
   }
-  document.getElementById('phonicsContent').innerHTML = "\n    <div class=\"usage-guide\" id=\"usageGuide\" style=\"display:none\">\n      <div class=\"guide-step\"><b>\u2460</b> \u770B\u5B57\u6BCD\u7EC4\u5408 + \u542C\u53D1\u97F3\uFF08\u81EA\u52A8\u64AD\u653E\uFF09</div>\n      <div class=\"guide-step\"><b>\u2461</b> \u70B9\u5355\u8BCD\u542C\u5B83\u5728\u8BCD\u8BED\u91CC\u600E\u4E48\u8BFB</div>\n      <div class=\"guide-step\"><b>\u2462</b> \u5927\u58F0\u8DDF\u8BFB\uFF0C\u611F\u53D7\u53E3\u578B</div>\n      <div class=\"guide-step\"><b>\u2463</b> \u70B9\u51FB\u300C\u6211\u5B66\u4F1A\u4E86\u300D\u6216\u300C\u5C0F\u6D4B\u4E00\u4E0B\u300D</div>\n      <div class=\"guide-tip\">\uD83D\uDCA1 \u5B66\u5B8C\u6240\u6709\u57FA\u7840\u97F3\u624D\u80FD\u89E3\u9501\u4E0B\u4E00\u9636\u6BB5</div>\n    </div>\n    ".concat(sectionBanner, "\n    <div class=\"rule-card\">\n      <div class=\"rule-card-letter\">").concat(r.sym, "</div>\n      <div class=\"rule-card-ipa\">\u53D1\u97F3 ").concat(r.text.split('�?).pop().trim(), "</div>\n      <div class=\"rule-card-type\">").concat(l.sub, "</div>\n      <div class=\"rule-card-hint\">").concat(r.desc, "</div>\n      <button class=\"rule-card-audio-btn\" onclick=\"playRuleSound('").concat(r.id, "')\">\uD83D\uDD0A \u542C\u53D1\u97F3</button>\n      <div class=\"word-grid\">").concat(wordsHtml, "</div>\n      <div class=\"rule-card-hint\" style=\"font-size:10px;color:var(--td);margin-top:2px\">\uD83D\uDC46 \u70B9\u4EFB\u610F\u8BCD\u542C\u5B8C\u6574\u53D1\u97F3\uFF0C\u6CE8\u610F\u6807\u8BB0\u5B57\u6BCD\u7684\u8BFB\u97F3</div>\n      <div class=\"rule-progress\">").concat(dotsHtml, "</div>\n      <div class=\"rule-card-hint\" style=\"font-size:11px;margin-top:2px\">").concat(l.title, " \xB7 ").concat(phState.currentRuleIdx + 1, "/").concat(totalRules, "</div>\n      <div class=\"rule-actions\">\n        <button class=\"rule-btn primary\" onclick=\"markRuleDone()\">\u2705 \u6211\u5B66\u4F1A\u4E86</button>\n        <button class=\"rule-btn\" onclick=\"startQuiz()\" style=\"font-size:13px;color:var(--td)\">\uD83C\uDFAF \u5C0F\u6D4B\u4E00\u4E0B</button>\n      </div>\n    </div>");
+  document.getElementById('phonicsContent').innerHTML = "\n    <div class=\"usage-guide\" id=\"usageGuide\" style=\"display:none\">\n      <div class=\"guide-step\"><b>\u2460</b> \u770B\u5B57\u6BCD\u7EC4\u5408 + \u542C\u53D1\u97F3\uFF08\u81EA\u52A8\u64AD\u653E\uFF09</div>\n      <div class=\"guide-step\"><b>\u2461</b> \u70B9\u5355\u8BCD\u542C\u5B83\u5728\u8BCD\u8BED\u91CC\u600E\u4E48\u8BFB</div>\n      <div class=\"guide-step\"><b>\u2462</b> \u5927\u58F0\u8DDF\u8BFB\uFF0C\u611F\u53D7\u53E3\u578B</div>\n      <div class=\"guide-step\"><b>\u2463</b> \u70B9\u51FB\u300C\u6211\u5B66\u4F1A\u4E86\u300D\u6216\u300C\u5C0F\u6D4B\u4E00\u4E0B\u300D</div>\n      <div class=\"guide-tip\">\uD83D\uDCA1 \u5B66\u5B8C\u6240\u6709\u57FA\u7840\u97F3\u624D\u80FD\u89E3\u9501\u4E0B\u4E00\u9636\u6BB5</div>\n    </div>\n    ".concat(sectionBanner, "\n    <div class=\"rule-card\">\n      <div class=\"rule-card-letter\">").concat(r.sym, "</div>\n      <div class=\"rule-card-ipa\">\u53D1\u97F3 ").concat(r.text.split('→').pop().trim(), "</div>\n      <div class=\"rule-card-type\">").concat(l.sub, "</div>\n      <div class=\"rule-card-hint\">").concat(r.desc, "</div>\n      <button class=\"rule-card-audio-btn\" onclick=\"playRuleSound('").concat(r.id, "')\">\uD83D\uDD0A \u542C\u53D1\u97F3</button>\n      <div class=\"word-grid\">").concat(wordsHtml, "</div>\n      <div class=\"rule-card-hint\" style=\"font-size:10px;color:var(--td);margin-top:2px\">\uD83D\uDC46 \u70B9\u4EFB\u610F\u8BCD\u542C\u5B8C\u6574\u53D1\u97F3\uFF0C\u6CE8\u610F\u6807\u8BB0\u5B57\u6BCD\u7684\u8BFB\u97F3</div>\n      <div class=\"rule-progress\">").concat(dotsHtml, "</div>\n      <div class=\"rule-card-hint\" style=\"font-size:11px;margin-top:2px\">").concat(l.title, " \xB7 ").concat(phState.currentRuleIdx + 1, "/").concat(totalRules, "</div>\n      <div class=\"rule-actions\">\n        <button class=\"rule-btn primary\" onclick=\"markRuleDone()\">\u2705 \u6211\u5B66\u4F1A\u4E86</button>\n        <button class=\"rule-btn\" onclick=\"startQuiz()\" style=\"font-size:13px;color:var(--td)\">\uD83C\uDFAF \u5C0F\u6D4B\u4E00\u4E0B</button>\n      </div>\n    </div>");
   // Guide stays collapsed; user clicks 📖 to open
   setTimeout(function () {
     return playRuleSound(r.id);
@@ -4983,7 +4983,7 @@ function startQuiz() {
       correctIdx: options.indexOf(correct.word)
     });
   }
-  document.getElementById('phonicsContent').innerHTML = '<div class="quiz-container" id="quizBox"><div class="quiz-header">🎯 小测一�?/div><div class="quiz-progress" id="quizProgress"></div><div class="quiz-question" id="quizQ"></div><div class="quiz-options" id="quizOpts"></div><div class="quiz-feedback" id="quizFeedback"></div><button class="rule-btn" onclick="endQuiz()" style="margin-top:12px;width:100%">返回课程</button></div>';
+  document.getElementById('phonicsContent').innerHTML = '<div class="quiz-container" id="quizBox"><div class="quiz-header">🎯 小测一下</div><div class="quiz-progress" id="quizProgress"></div><div class="quiz-question" id="quizQ"></div><div class="quiz-options" id="quizOpts"></div><div class="quiz-feedback" id="quizFeedback"></div><button class="rule-btn" onclick="endQuiz()" style="margin-top:12px;width:100%">返回课程</button></div>';
   showQuizQuestion();
 }
 function showQuizQuestion() {
@@ -4992,8 +4992,8 @@ function showQuizQuestion() {
     showQuizResult();
     return;
   }
-  document.getElementById('quizProgress').textContent = '�?' + (quizState.current + 1) + '/' + quizState.total + ' �?· 得分 ' + quizState.score;
-  document.getElementById('quizQ').innerHTML = '<div style="font-size:13px;color:var(--td);margin-bottom:4px">规则�? + q.ruleText + '</div><div style="font-size:18px;font-weight:700;color:var(--a);margin-bottom:10px">点击听到的单�?🔊</div>';
+  document.getElementById('quizProgress').textContent = '第 ' + (quizState.current + 1) + '/' + quizState.total + ' 题 · 得分 ' + quizState.score;
+  document.getElementById('quizQ').innerHTML = '<div style="font-size:13px;color:var(--td);margin-bottom:4px">规则：' + q.ruleText + '</div><div style="font-size:18px;font-weight:700;color:var(--a);margin-bottom:10px">点击听到的单词 🔊</div>';
   setTimeout(function () {
     playWordAudio(q.word);
   }, 300);
@@ -5011,7 +5011,7 @@ function checkQuizAnswer(idx) {
   var fb = document.getElementById('quizFeedback');
   if (correct) {
     quizState.score++;
-    fb.innerHTML = '<div style="color:var(--a);font-size:15px;margin-top:6px">�?正确！它就是 "' + q.word + '"</div>';
+    fb.innerHTML = '<div style="color:var(--a);font-size:15px;margin-top:6px">✅ 正确！它就是 "' + q.word + '"</div>';
   } else {
     quizState.errorLog.push({
       word: q.word,
@@ -5020,7 +5020,7 @@ function checkQuizAnswer(idx) {
       sym: q.sym,
       answered: q.options[idx]
     });
-    fb.innerHTML = '<div style="color:#ff6b6b;font-size:15px;margin-top:6px">�?正确答案�?"' + q.word + '"</div>';
+    fb.innerHTML = '<div style="color:#ff6b6b;font-size:15px;margin-top:6px">❌ 正确答案是 "' + q.word + '"</div>';
   }
   // Disable all option buttons
   var btns = document.querySelectorAll('.quiz-option-btn');
@@ -5050,14 +5050,14 @@ function showQuizResult() {
   quizState.active = false;
   var pct = Math.round(quizState.score / quizState.total * 100);
   var emoji = pct >= 80 ? '🏆' : pct >= 60 ? '👍' : '💪';
-  document.getElementById('quizProgress').textContent = '完成�?;
+  document.getElementById('quizProgress').textContent = '完成！';
   document.getElementById('quizQ').innerHTML = '<div style="font-size:30px;margin:8px 0">' + emoji + '</div><div style="font-size:15px;font-weight:700">' + quizState.score + '/' + quizState.total + ' 正确 (' + pct + '%)</div>';
   document.getElementById('quizOpts').innerHTML = '';
   var fbHtml = '';
   if (quizState.errorLog.length > 0) {
     fbHtml += '<div style="margin-top:10px;font-size:11px;color:var(--td);border-top:1px solid rgba(255,255,255,.06);padding-top:8px">📝 错题本：</div>';
     quizState.errorLog.forEach(function (e) {
-      fbHtml += '<div style="font-size:11px;padding:2px 0;text-align:left">�?' + e.word + ' (' + e.ruleText + ') �?你选了 "' + e.answered + '"</div>';
+      fbHtml += '<div style="font-size:11px;padding:2px 0;text-align:left">❌ ' + e.word + ' (' + e.ruleText + ') → 你选了 "' + e.answered + '"</div>';
     });
   } else {
     fbHtml = '<div style="color:var(--a);margin-top:8px;font-size:14px">全部正确！太棒了 🎉</div>';
@@ -5112,7 +5112,7 @@ function markRuleDone() {
 function renderTransitionPage() {
   var totalLessons = PHONICS_LESSONS.length;
   document.getElementById('phGlobalFill').style.width = '100%';
-  document.getElementById('phGlobalLabel').textContent = totalLessons + '/' + totalLessons + ' 课完�?;
+  document.getElementById('phGlobalLabel').textContent = totalLessons + '/' + totalLessons + ' 课完成';
   document.getElementById('phonicsContent').innerHTML = "\n    <div class=\"transition-page\">\n      <div class=\"transition-icon\">\uD83C\uDFC6</div>\n      <div class=\"transition-title\">\u62FC\u8BFB\u8BAD\u7EC3\u8425 \xB7 \u5168\u90E8\u5B8C\u6210\uFF01</div>\n      <div class=\"transition-sub\">\n        \u4F60\u5DF2\u7ECF\u638C\u63E1\u4E86 ".concat(totalLessons, " \u8BFE ").concat(PHONICS_LESSONS.reduce(function (s, l) {
     return s + l.rules.length;
   }, 0), " \u6761\u62FC\u8BFB\u89C4\u5219\u3002<br>\n        \u73B0\u5728\u53EF\u4EE5\u8FDB\u5165\u77ED\u8BED\u6D41\uFF0C\u7528\u97F3\u4E50 + \u62FC\u8BFB\u53CC\u901A\u9053\u9AD8\u6548\u5B66\u82F1\u8BED\uFF01\n      </div>\n      <div class=\"transition-stats\">\n        <div class=\"transition-stat\"><div class=\"transition-stat-num\">").concat(totalLessons, "</div><div class=\"transition-stat-label\">\u8BFE\u7A0B</div></div>\n        <div class=\"transition-stat\"><div class=\"transition-stat-num\">").concat(PHONICS_LESSONS.reduce(function (s, l) {
@@ -5132,7 +5132,7 @@ function renderRuleList() {
       completed: 0
     };
     var done = p.completed >= l.rules.length;
-    html += "<div class=\"lesson-item ".concat(done ? 'done' : i === getNextLesson() ? 'now' : '', "\" onclick=\"phState.currentLesson=").concat(i, ";phState.currentRuleIdx=0;renderRuleCard()\">\n      <div class=\"lesson-item-icon\">").concat(done ? '�? : '📖', "</div>\n      <div class=\"lesson-item-info\">\n        <div class=\"lesson-item-title\">").concat(l.title, "</div>\n        <div class=\"lesson-item-sub\">").concat(l.sub, "</div>\n      </div>\n      <div class=\"lesson-item-pct\">").concat(p.completed || 0, "/").concat(l.rules.length, "</div>\n    </div>");
+    html += "<div class=\"lesson-item ".concat(done ? 'done' : i === getNextLesson() ? 'now' : '', "\" onclick=\"phState.currentLesson=").concat(i, ";phState.currentRuleIdx=0;renderRuleCard()\">\n      <div class=\"lesson-item-icon\">").concat(done ? '✅' : '📖', "</div>\n      <div class=\"lesson-item-info\">\n        <div class=\"lesson-item-title\">").concat(l.title, "</div>\n        <div class=\"lesson-item-sub\">").concat(l.sub, "</div>\n      </div>\n      <div class=\"lesson-item-pct\">").concat(p.completed || 0, "/").concat(l.rules.length, "</div>\n    </div>");
   });
   document.getElementById('phonicsContent').innerHTML = "\n    <div class=\"lesson-list\">".concat(html, "</div>\n    <a class=\"ph-sublink\" onclick=\"renderCurrentRule()\" style=\"margin-top:14px;display:block;text-align:center\">\u8FD4\u56DE\u5F53\u524D\u8FDB\u5EA6</a>");
 }
@@ -5263,15 +5263,15 @@ function showSoundBridge(entry) {
     span.className = 'sb-chunk';
     if (ch.hasVowel) span.classList.add('vowel-chunk');else span.classList.add('cons-chunk');
     if (ch.stressed) span.classList.add('stressed');
-    if (ch.stressed) span.innerHTML = ch.text + '<span class="stress-mark">�?/span>';else span.textContent = ch.text;
+    if (ch.stressed) span.innerHTML = ch.text + '<span class="stress-mark">▼</span>';else span.textContent = ch.text;
     span.onclick = function () {
       return speakChunk(ch.text, span);
     };
     chunksEl.appendChild(span);
   });
-  document.getElementById('sbInfo').textContent = analysis.syllableCount + '个音�?· ' + analysis.vowelCount + '个元�? + (analysis.chunks.some(function (c) {
+  document.getElementById('sbInfo').textContent = analysis.syllableCount + '个音节 · ' + analysis.vowelCount + '个元音' + (analysis.chunks.some(function (c) {
     return c.stressed;
-  }) ? ' · 重音: �? : '');
+  }) ? ' · 重音: ▼' : '');
 
   // Sentence frame display
   var frameEl = document.getElementById('sbFrame');
@@ -5281,7 +5281,7 @@ function showSoundBridge(entry) {
     });
     if (f) {
       var filled = f.pattern.replace('___', '<b>' + entry.phrase.s + '</b>');
-      frameEl.innerHTML = '🧩 句型：�? + filled + '�?br><small>可替�? ' + f.slot + ' | 其他例句: ' + f.examples.join(' · ') + '</small>';
+      frameEl.innerHTML = '🧩 句型：「' + filled + '」<br><small>可替换: ' + f.slot + ' | 其他例句: ' + f.examples.join(' · ') + '</small>';
       frameEl.style.display = 'block';
     } else {
       frameEl.style.display = 'none';
@@ -5339,8 +5339,8 @@ function showSoundBridge(entry) {
     var cats = {
       'cons': '辅音组合',
       'vowel': '元音组合',
-      'rctl': 'R控元�?,
-      'silent': '不发�?,
+      'rctl': 'R控元音',
+      'silent': '不发音',
       'blend': '辅音连缀',
       'ending': '常见后缀'
     };
@@ -5423,7 +5423,7 @@ function showSpelling(entry) {
     return "<span class=\"spell-char\">".concat(l, "</span>");
   }).join('');
   var chars = Array.from(lel.querySelectorAll('.spell-char'));
-  document.getElementById('spellInfo').textContent = letters.length + '个字�?· 跟读�?;
+  document.getElementById('spellInfo').textContent = letters.length + '个字母 · 跟读…';
   var idx = 0;
   function lightNext() {
     if (idx > 0) chars[idx - 1].classList.add('done');
@@ -5443,7 +5443,7 @@ function showSpelling(entry) {
         rate: .6,
         vol: .7
       });
-      document.getElementById('spellInfo').textContent = '�?拼读完成 �?点击下方按钮进入测试';
+      document.getElementById('spellInfo').textContent = '✅ 拼读完成 — 点击下方按钮进入测试';
       spellTimer = null;
       return;
     }
@@ -5463,7 +5463,7 @@ function showSpelling(entry) {
       o.start(now);
       o.stop(now + .09);
     }
-    document.getElementById('spellInfo').textContent = '�? + (idx + 1) + '个字�? ' + letters[idx];
+    document.getElementById('spellInfo').textContent = '第' + (idx + 1) + '个字母: ' + letters[idx];
     spellTimer = setTimeout(lightNext, 450);
     idx++;
   }
@@ -5478,7 +5478,7 @@ function spellGoRecall() {
 }
 
 // ============================================================
-// PROGRESSIVE RECALL: Stage 1�?�?
+// PROGRESSIVE RECALL: Stage 1→2→3
 // ============================================================
 var recallStage = 1;
 var recallInput = [],
@@ -5496,13 +5496,13 @@ function setRecallScreen(entry) {
   var stages = ['识别', '填空补全', '完整拼写'];
   document.getElementById('stageIndicator').innerHTML = '';
   for (var i = 0; i < 3; i++) {
-    document.getElementById('stageIndicator').innerHTML += '<span' + (i + 1 === stage ? ' class="active-stage"' : '') + '>' + (i + 1 === stage ? '�?' : '�?') + stages[i] + (i < 2 ? ' �?' : '') + '</span>';
+    document.getElementById('stageIndicator').innerHTML += '<span' + (i + 1 === stage ? ' class="active-stage"' : '') + '>' + (i + 1 === stage ? '● ' : '○ ') + stages[i] + (i < 2 ? ' → ' : '') + '</span>';
   }
   if (entry.isReview) {
-    document.getElementById('recallTitle').textContent = '🔁 还记得吗�?;
-    document.getElementById('recallMeta').textContent = 'Lv' + entry.level + ' · ' + entry.phrase.en.split(' ')[0] + '�?;
+    document.getElementById('recallTitle').textContent = '🔁 还记得吗？';
+    document.getElementById('recallMeta').textContent = 'Lv' + entry.level + ' · ' + entry.phrase.en.split(' ')[0] + '…';
   } else {
-    document.getElementById('recallTitle').textContent = '🧠 回想一下�?;
+    document.getElementById('recallTitle').textContent = '🧠 回想一下…';
     document.getElementById('recallMeta').textContent = '';
   }
   var content = document.getElementById('recallContent');
@@ -5539,7 +5539,7 @@ function buildRecognition(entry, content) {
       group.dataset.done = '1';
       if (opt === p.en) {
         btn.classList.add('pick');
-        document.getElementById('recallFB').textContent = '�?没错�?;
+        document.getElementById('recallFB').textContent = '✅ 没错！';
         document.getElementById('recallFB').className = 'recall-feedback ok';
         sessionOk++;
         sessionTotal++;
@@ -5552,7 +5552,7 @@ function buildRecognition(entry, content) {
         group.querySelectorAll('.choice-btn').forEach(function (b) {
           if (b.textContent === p.en) b.classList.add('pick');
         });
-        document.getElementById('recallFB').textContent = '�?应该是：' + p.en;
+        document.getElementById('recallFB').textContent = '✗ 应该是：' + p.en;
         document.getElementById('recallFB').className = 'recall-feedback err';
         sessionTotal++;
         updateScore();
@@ -5643,7 +5643,7 @@ function submitScaffold(entry, blanks) {
     blanks.forEach(function (b) {
       return b.el.classList.add('correct-all');
     });
-    fb.textContent = '�?完美�?;
+    fb.textContent = '✅ 完美！';
     fb.className = 'recall-feedback ok';
     sessionOk++;
     sessionTotal++;
@@ -5659,7 +5659,7 @@ function submitScaffold(entry, blanks) {
       b.el.textContent = b.char;
       b.el.classList.add('correct-all');
     });
-    fb.textContent = '�?看一遍：' + p.en;
+    fb.textContent = '✗ 看一遍：' + p.en;
     fb.className = 'recall-feedback err';
     sessionTotal++;
     updateScore();
@@ -5714,7 +5714,7 @@ function submitFullRecall(entry, chars) {
     recallElements.forEach(function (b) {
       return b.classList.add('correct-all');
     });
-    fb.textContent = '�?正确�?;
+    fb.textContent = '✅ 正确！';
     fb.className = 'recall-feedback ok';
     sessionOk++;
     updateScore();
@@ -5728,7 +5728,7 @@ function submitFullRecall(entry, chars) {
       recallElements[i].textContent = c;
       recallElements[i].classList.add('correct-all');
     });
-    fb.textContent = '�?应该是：' + p.en;
+    fb.textContent = '✗ 应该是：' + p.en;
     fb.className = 'recall-feedback err';
     updateScore();
     recordRecallResult(entry.did, entry.phraseIdx, false);
@@ -5810,7 +5810,7 @@ function buildKeyboard(chars, blanksRef, onSubmit) {
   // Del
   var del = document.createElement('button');
   del.className = 'key del';
-  del.textContent = '�?;
+  del.textContent = '⌫';
   del.onclick = function () {
     if (blanksRef) {
       for (var i = blanksRef.length - 1; i >= 0; i--) {
@@ -5834,7 +5834,7 @@ function buildKeyboard(chars, blanksRef, onSubmit) {
   // Go
   var go = document.createElement('button');
   go.className = 'key go';
-  go.textContent = '�?;
+  go.textContent = '✓';
   go.onclick = onSubmit;
   kb.appendChild(go);
   return kb;
@@ -5950,7 +5950,7 @@ function getRepsForStage(stage) {
   return stage === 1 ? 6 : stage === 2 ? 4 : 3;
 }
 
-// NEW: processPhrase routes through Hear First �?Jingle �?Sound Bridge
+// NEW: processPhrase routes through Hear First → Jingle → Sound Bridge
 function processPhrase(entry) {
   if (!playing) return;
   currentPhraseEntry = entry;
@@ -5971,7 +5971,7 @@ function startJingleLoop(entry) {
     if (currentJingleRep >= totalReps) {
       // Step 3: Sound Bridge after music
       document.getElementById('transitionText').style.display = 'block';
-      document.getElementById('transitionText').textContent = '回想刚刚的旋律�?;
+      document.getElementById('transitionText').textContent = '回想刚刚的旋律…';
       if (transitionTimer) clearTimeout(transitionTimer);
       transitionTimer = setTimeout(function () {
         document.getElementById('transitionText').style.display = 'none';
@@ -6066,7 +6066,7 @@ function stop() {
     clearTimeout(hearTimeout);
     hearTimeout = null;
   }
-  document.getElementById('btnPlay').textContent = '🎧 开始聆�?;
+  document.getElementById('btnPlay').textContent = '🎧 开始聆听';
   document.getElementById('btnPlay').classList.remove('on');
   document.getElementById('pulseRing').classList.add('idle');
   document.getElementById('pulseRing').classList.remove('beat');
@@ -6098,7 +6098,7 @@ function complete() {
   var totalPhrases = DOMAINS.reduce(function (s, d) {
     return s + d.phrases.length;
   }, 0);
-  alert('🎉 今日训练完成！\n�?正确�? + sessionOk + '/' + sessionTotal + '\n📚 已掌握：' + mastered + '/' + totalPhrases + '\n🔥 打卡 ' + S.streak + ' �?);
+  alert('🎉 今日训练完成！\n✅ 正确：' + sessionOk + '/' + sessionTotal + '\n📚 已掌握：' + mastered + '/' + totalPhrases + '\n🔥 打卡 ' + S.streak + ' 天');
 }
 function updateTimer() {
   var m = Math.floor(sessionSec / 60),
@@ -6116,13 +6116,13 @@ function renderDots() {
   // Phase tabs
   var phases = [{
     id: 'survival',
-    label: '🟢 Phase 1 生存�?
+    label: '🟢 Phase 1 生存层'
   }, {
     id: 'life',
-    label: '🟡 Phase 2 生活�?
+    label: '🟡 Phase 2 生活层'
   }, {
     id: 'expansion',
-    label: '🔵 Phase 3 扩展�?
+    label: '🔵 Phase 3 扩展层'
   }];
   var activePhase = DOMAINS[S.currentDomain].phase;
   h += '<div class="phase-tabs">';
@@ -6212,7 +6212,7 @@ function getTodaySuggestion() {
       }
     }
   }
-  // All done �?first domain for review
+  // All done → first domain for review
   return 0;
 }
 function getMasteredCount() {
@@ -6242,9 +6242,9 @@ function renderDashboard() {
   var studiedToday = S.lastStudyDate === today;
   var activePhase = DOMAINS[S.currentDomain].phase;
   var phaseLabels = {
-    survival: '🟢 生存�?,
-    life: '🟡 生活�?,
-    expansion: '🔵 扩展�?
+    survival: '🟢 生存层',
+    life: '🟡 生活层',
+    expansion: '🔵 扩展层'
   };
 
   // Stats row
@@ -6269,13 +6269,13 @@ function renderDashboard() {
   var ol = '';
   var phases = [{
     id: 'survival',
-    label: '🟢 Phase 1 · 生存�?
+    label: '🟢 Phase 1 · 生存层'
   }, {
     id: 'life',
-    label: '🟡 Phase 2 · 生活�?
+    label: '🟡 Phase 2 · 生活层'
   }, {
     id: 'expansion',
-    label: '🔵 Phase 3 · 扩展�?
+    label: '🔵 Phase 3 · 扩展层'
   }];
   phases.forEach(function (ph) {
     var ds = DOMAINS.filter(function (d) {
@@ -6296,7 +6296,7 @@ function renderDashboard() {
       var cls = [];
       if (done) cls.push('done');
       if (now) cls.push('now');
-      ol += "<div class=\"outline-row".concat(cls.length ? ' ' + cls.join(' ') : '', "\" onclick=\"selectDomain(").concat(idx, ");start()\">\n        <div class=\"outline-num\">").concat(done ? '�? : idx + 1, "</div>\n        <div class=\"outline-info\">\n          <div class=\"outline-name\">").concat(d.title, "</div>\n          <div class=\"outline-sub\">").concat(d.title_en, " \xB7 ").concat(d.cefr, "</div>\n        </div>\n        <div class=\"outline-bar\"><div class=\"outline-bar-fill\" style=\"width:").concat(pct, "%\"></div></div>\n        <div class=\"outline-status").concat(done ? ' done' : '', "\">").concat(m, "/").concat(d.phrases.length, "</div>\n      </div>");
+      ol += "<div class=\"outline-row".concat(cls.length ? ' ' + cls.join(' ') : '', "\" onclick=\"selectDomain(").concat(idx, ");start()\">\n        <div class=\"outline-num\">").concat(done ? '✅' : idx + 1, "</div>\n        <div class=\"outline-info\">\n          <div class=\"outline-name\">").concat(d.title, "</div>\n          <div class=\"outline-sub\">").concat(d.title_en, " \xB7 ").concat(d.cefr, "</div>\n        </div>\n        <div class=\"outline-bar\"><div class=\"outline-bar-fill\" style=\"width:").concat(pct, "%\"></div></div>\n        <div class=\"outline-status").concat(done ? ' done' : '', "\">").concat(m, "/").concat(d.phrases.length, "</div>\n      </div>");
     });
   });
   document.getElementById('outlineList').innerHTML = ol;
@@ -6307,7 +6307,7 @@ document.addEventListener('DOMContentLoaded', function () {
 window.addEventListener('beforeunload', function (e) {
   if (playing) {
     e.preventDefault();
-    e.returnValue = '播放�?;
+    e.returnValue = '播放中';
   }
 });
 window.addEventListener('pagehide', function () {
@@ -6333,53 +6333,53 @@ function closeVowelChart() {
 }
 function renderVowelChart() {
   var data = [
-    {title:'短元�?Short Vowels', items:[
-      {code:'a', ipa:'/æ/', words:[['cat','�?],['apple','苹果'],['bag','�?]], rid:'short_a'},
-      {code:'e', ipa:'/e/', words:[['bed','�?],['desk','书桌'],['red','红色']], rid:'short_e'},
-      {code:'i', ipa:'/ɪ/', words:[['pig','�?],['fish','�?],['milk','牛奶']], rid:'short_i'},
-      {code:'o', ipa:'/ɒ/', words:[['dog','�?],['fox','狐狸'],['box','盒子']], rid:'short_o'},
-      {code:'u', ipa:'/ʌ/', words:[['cup','杯子'],['sun','太阳'],['run','�?]], rid:'short_u'}
+    {title:'短元音 Short Vowels', items:[
+      {code:'a', ipa:'/æ/', words:[['cat','猫'],['apple','苹果'],['bag','包']], rid:'short_a'},
+      {code:'e', ipa:'/e/', words:[['bed','床'],['desk','书桌'],['red','红色']], rid:'short_e'},
+      {code:'i', ipa:'/ɪ/', words:[['pig','猪'],['fish','鱼'],['milk','牛奶']], rid:'short_i'},
+      {code:'o', ipa:'/ɒ/', words:[['dog','狗'],['fox','狐狸'],['box','盒子']], rid:'short_o'},
+      {code:'u', ipa:'/ʌ/', words:[['cup','杯子'],['sun','太阳'],['run','跑']], rid:'short_u'}
     ]},
     {title:'魔法 E Magic E', items:[
       {code:'a_e', ipa:'/eɪ/', words:[['cake','蛋糕'],['name','名字'],['game','游戏']], rid:'magic_a'},
-      {code:'i_e', ipa:'/aɪ/', words:[['bike','自行�?],['ride','�?],['time','时间']], rid:'magic_i'},
-      {code:'o_e', ipa:'/əʊ/', words:[['home','�?],['rope','绳子'],['note','便条']], rid:'magic_o'},
-      {code:'u_e', ipa:'/juː/', words:[['cube','立方�?],['tube','管子'],['huge','巨大']], rid:'magic_u'}
+      {code:'i_e', ipa:'/aɪ/', words:[['bike','自行车'],['ride','骑'],['time','时间']], rid:'magic_i'},
+      {code:'o_e', ipa:'/əʊ/', words:[['home','家'],['rope','绳子'],['note','便条']], rid:'magic_o'},
+      {code:'u_e', ipa:'/juː/', words:[['cube','立方体'],['tube','管子'],['huge','巨大']], rid:'magic_u'}
     ]},
     {title:'元音组合 Vowel Teams', items:[
-      {code:'ee', ipa:'/iː/', words:[['bee','蜜蜂'],['tree','�?],['sleep','睡觉']], rid:'vt_ee'},
-      {code:'ea', ipa:'/iː/ /e/', words:[['tea','�?],['read','�?],['head','�?]], rid:'vt_ea'},
-      {code:'ai', ipa:'/eɪ/', words:[['rain','�?],['train','火车'],['mail','邮件']], rid:'vt_ai'},
-      {code:'oa', ipa:'/əʊ/', words:[['boat','�?],['road','�?],['goat','山羊']], rid:'vt_oa'},
-      {code:'oo', ipa:'/uː/ /ʊ/', words:[['moon','月亮'],['book','�?],['food','食物']], rid:'vt_oo'},
-      {code:'igh', ipa:'/aɪ/', words:[['night','晚上'],['light','�?],['right','�?]], rid:'vt_igh'},
-      {code:'ay', ipa:'/eɪ/', words:[['day','�?],['play','�?],['stay','停留']], rid:'vt_ay'},
+      {code:'ee', ipa:'/iː/', words:[['bee','蜜蜂'],['tree','树'],['sleep','睡觉']], rid:'vt_ee'},
+      {code:'ea', ipa:'/iː/ /e/', words:[['tea','茶'],['read','读'],['head','头']], rid:'vt_ea'},
+      {code:'ai', ipa:'/eɪ/', words:[['rain','雨'],['train','火车'],['mail','邮件']], rid:'vt_ai'},
+      {code:'oa', ipa:'/əʊ/', words:[['boat','船'],['road','路'],['goat','山羊']], rid:'vt_oa'},
+      {code:'oo', ipa:'/uː/ /ʊ/', words:[['moon','月亮'],['book','书'],['food','食物']], rid:'vt_oo'},
+      {code:'igh', ipa:'/aɪ/', words:[['night','晚上'],['light','灯'],['right','对']], rid:'vt_igh'},
+      {code:'ay', ipa:'/eɪ/', words:[['day','天'],['play','玩'],['stay','停留']], rid:'vt_ay'},
       {code:'ey', ipa:'/iː/ /eɪ/', words:[['key','钥匙'],['they','他们'],['grey','灰色']], rid:'vt_ey'},
-      {code:'aw', ipa:'/ɔː/', words:[['saw','看见'],['draw','�?],['law','法律']], rid:'vt_aw'},
-      {code:'au', ipa:'/ɔː/', words:[['autumn','秋天'],['sauce','�?],['fault','错误']], rid:'vt_au'},
-      {code:'ew', ipa:'/juː/', words:[['new','新的'],['few','很少'],['chew','咀�?]], rid:'vt_ew'},
+      {code:'aw', ipa:'/ɔː/', words:[['saw','看见'],['draw','画'],['law','法律']], rid:'vt_aw'},
+      {code:'au', ipa:'/ɔː/', words:[['autumn','秋天'],['sauce','酱'],['fault','错误']], rid:'vt_au'},
+      {code:'ew', ipa:'/juː/', words:[['new','新的'],['few','很少'],['chew','咀嚼']], rid:'vt_ew'},
       {code:'ue', ipa:'/uː/ /juː/', words:[['blue','蓝色'],['true','真的'],['clue','线索']], rid:'vt_ue'},
-      {code:'y', ipa:'/iː/', words:[['baby','宝宝'],['happy','开�?],['sunny','晴天']], rid:'vt_y'}
+      {code:'y', ipa:'/iː/', words:[['baby','宝宝'],['happy','开心'],['sunny','晴天']], rid:'vt_y'}
     ]},
-    {title:'R控元�?R-Controlled', items:[
+    {title:'R控元音 R-Controlled', items:[
       {code:'ar', ipa:'/ɑːr/', words:[['car','汽车'],['star','星星'],['dark','黑暗']], rid:'r_ar'},
       {code:'er', ipa:'/ɜːr/', words:[['her','她的'],['germ','细菌'],['term','学期']], rid:'r_er'},
-      {code:'ir', ipa:'/ɜːr/', words:[['bird','�?],['girl','女孩'],['first','第一']], rid:'r_ir'},
-      {code:'or', ipa:'/ɔːr/', words:[['for','为了'],['storm','暴风�?],['corn','玉米']], rid:'r_or'},
-      {code:'ur', ipa:'/ɜːr/', words:[['fur','毛皮'],['turn','�?],['burn','�?]], rid:'r_ur'},
-      {code:'ear', ipa:'/ɪr/ /ɜːr/', words:[['ear','耳朵'],['hear','�?],['near','附近']], rid:'r_ear'},
+      {code:'ir', ipa:'/ɜːr/', words:[['bird','鸟'],['girl','女孩'],['first','第一']], rid:'r_ir'},
+      {code:'or', ipa:'/ɔːr/', words:[['for','为了'],['storm','暴风雨'],['corn','玉米']], rid:'r_or'},
+      {code:'ur', ipa:'/ɜːr/', words:[['fur','毛皮'],['turn','转'],['burn','烧']], rid:'r_ur'},
+      {code:'ear', ipa:'/ɪr/ /ɜːr/', words:[['ear','耳朵'],['hear','听'],['near','附近']], rid:'r_ear'},
       {code:'air', ipa:'/er/', words:[['air','空气'],['hair','头发'],['chair','椅子']], rid:'r_air'},
-      {code:'eer', ipa:'/ɪr/', words:[['deer','�?],['cheer','欢呼'],['beer','啤酒']], rid:'r_eer'},
-      {code:'ire', ipa:'/aɪr/', words:[['fire','�?],['tire','轮胎'],['wire','电线']], rid:'r_ire'},
+      {code:'eer', ipa:'/ɪr/', words:[['deer','鹿'],['cheer','欢呼'],['beer','啤酒']], rid:'r_eer'},
+      {code:'ire', ipa:'/aɪr/', words:[['fire','火'],['tire','轮胎'],['wire','电线']], rid:'r_ire'},
       {code:'ore', ipa:'/ɔːr/', words:[['more','更多'],['store','商店'],['core','核心']], rid:'r_ore'},
-      {code:'are', ipa:'/er/', words:[['care','关心'],['share','分享'],['dare','�?]], rid:'r_are'}
+      {code:'are', ipa:'/er/', words:[['care','关心'],['share','分享'],['dare','敢']], rid:'r_are'}
     ]},
     {title:'特殊模式 Special', items:[
-      {code:'oi/oy', ipa:'/ɔɪ/', words:[['oil','�?],['boy','男孩'],['coin','硬币']], rid:'oi_oy'},
-      {code:'ow/ou', ipa:'/aʊ/', words:[['cow','奶牛'],['down','向下'],['mouth','�?]], rid:'ow_ou'},
+      {code:'oi/oy', ipa:'/ɔɪ/', words:[['oil','油'],['boy','男孩'],['coin','硬币']], rid:'oi_oy'},
+      {code:'ow/ou', ipa:'/aʊ/', words:[['cow','奶牛'],['down','向下'],['mouth','嘴']], rid:'ow_ou'},
       {code:'ə', ipa:'/ə/', words:[['sofa','沙发'],['about','关于'],['banana','香蕉']], rid:'schwa'},
-      {code:'ought', ipa:'/ɔːt/', words:[['thought','思�?],['bought','买了'],['fought','打斗']], rid:'sp_ought'},
-      {code:'all', ipa:'/ɔːl/', words:[['all','全部'],['ball','�?],['tall','�?]], rid:'sp_all'}
+      {code:'ought', ipa:'/ɔːt/', words:[['thought','思考'],['bought','买了'],['fought','打斗']], rid:'sp_ought'},
+      {code:'all', ipa:'/ɔːl/', words:[['all','全部'],['ball','球'],['tall','高']], rid:'sp_all'}
     ]}
   ];
   var body = document.getElementById('vcCardBody');
@@ -6391,7 +6391,7 @@ function renderVowelChart() {
     for (var j = 0; j < sec.items.length; j++) {
       var r = sec.items[j];
       var rid = r.rid;
-      h += '<div class="vc-row"><div class="vc-head" data-rid="' + rid + '" onclick="vcToggle(this)"><code>' + r.code + '</code><span class="vc-ipa">' + r.ipa + '</span><span class="vc-play-icon" onclick="event.stopPropagation();vcPlayRid(this.parentElement.dataset.rid)" title="播放发音">🎧</span><span class="vc-arrow">�?/span></div><div class="vc-words" style="display:none">';
+      h += '<div class="vc-row"><div class="vc-head" data-rid="' + rid + '" onclick="vcToggle(this)"><code>' + r.code + '</code><span class="vc-ipa">' + r.ipa + '</span><span class="vc-play-icon" onclick="event.stopPropagation();vcPlayRid(this.parentElement.dataset.rid)" title="播放发音">🎧</span><span class="vc-arrow">▸</span></div><div class="vc-words" style="display:none">';
       for (var k = 0; k < r.words.length; k++) {
         var w = r.words[k];
         h += '<span class="vc-w" data-rid="' + rid + '" data-word="' + w[0] + '" onclick="event.stopPropagation();vcPlayWord(this.getAttribute(\'data-word\'))">' + w[0] + '<i>' + w[1] + '</i></span>';
@@ -6411,10 +6411,10 @@ function vcToggle(head, rid) {
   var isOpen = words.style.display !== 'none';
   if (!isOpen) {
     words.style.display = 'flex';
-    if (arrow) arrow.textContent = '�?;
+    if (arrow) arrow.textContent = '▾';
   } else {
     words.style.display = 'none';
-    if (arrow) arrow.textContent = '�?;
+    if (arrow) arrow.textContent = '▸';
   }
   // Play the sound
   vcPlayRid(rid);
