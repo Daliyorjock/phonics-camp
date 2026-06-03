@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-  <meta name="version" content="v9.19-457905">
+  <meta name="version" content="v9.19-459361">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-<title>DeepLingual · v9.19-457905</title>
+<title>DeepLingual · v9.19-459361</title>
 <style>
 :root{--bg:#f8f7fc;--p:#7c5ce7;--pg:#6b52d9;--a:#00d4aa;--t:#1e1b4b;--td:#7c7c98;--err:#ff4477;--warn:#f0a040}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -431,6 +431,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','PingFang SC'
 .vc-words{color:var(--td)}
 @media(max-width:768px){.vc-2col{grid-template-columns:1fr}}
 
+
+.grad-btn{display:inline-flex;align-items:center;gap:6px;padding:12px 28px;background:var(--p);color:#fff;border-radius:24px;text-decoration:none;font-size:15px;font-weight:600;transition:opacity .2s}.grad-btn:hover{opacity:.85}
 </style>
 </head>
 <body>
@@ -4654,6 +4656,7 @@ function showPhraseFlow() {
 }
 function hasCompleted(idx) {
   var l = PHONICS_LESSONS[idx];
+  if (l.transition) return false;
   var p = phState.lessons[l.id];
   if (!p || !p.completed) return false;
   return p.completed >= l.rules.length;
@@ -4666,8 +4669,18 @@ function getCompletedCount() {
   return c;
 }
 function getNextLesson() {
-  for (var i = 0; i < PHONICS_LESSONS.length; i++) if (!hasCompleted(i)) return i;
-  return 0; // all done, return to first
+  for (var i = 0; i < PHONICS_LESSONS.length; i++) {
+    var l = PHONICS_LESSONS[i];
+    if (l.transition) {
+      // Show graduation only if all regular lessons are done
+      var allDone = true;
+      for (var j = 0; j < i; j++) { if (!hasCompleted(j)) { allDone = false; break; } }
+      if (allDone) return i;
+      continue;
+    }
+    if (!hasCompleted(i)) return i;
+  }
+  return 0;
 }
 
 // ── Render Rule ──
@@ -4705,6 +4718,20 @@ function toggleGuide() {
 }
 function renderRuleCard() {
   var l = PHONICS_LESSONS[phState.currentLesson];
+  if (l.transition) {
+    var h = '<div class="r-card" style="text-align:center;padding:40px 16px;background:linear-gradient(135deg,rgba(124,92,231,.05),rgba(0,184,148,.08));border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,.06)">';
+    h += '<div style="font-size:48px;margin-bottom:16px">🎓</div>';
+    h += '<div style="font-size:18px;font-weight:700;color:var(--t);margin-bottom:8px">' + l.title + '</div>';
+    h += '<div style="font-size:13px;color:var(--td);margin-bottom:16px">' + (l.desc||'') + '</div>';
+    h += '<a href="' + l.linkUrl + '" class="grad-btn">' + l.linkText + '</a>';
+
+    h += '<div style="font-size:12px;color:var(--td);margin-top:14px">右下角 📖 可随时查看元音表</div>';
+    h += '</div>';
+    document.getElementById('ruleCard').innerHTML = h;
+    var nav = document.getElementById('ruleNav');
+    if (nav) nav.style.display = 'none';
+    return;
+  }
   var r = l.rules[phState.currentRuleIdx];
   var totalRules = l.rules.length;
   var totalLessons = PHONICS_LESSONS.length;
