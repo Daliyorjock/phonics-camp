@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-  <meta name="version" content="v9.18-452088">
+  <meta name="version" content="v9.18-455703">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-<title>DeepLingual · v9.18-452088</title>
+<title>DeepLingual · v9.18-455703</title>
 <style>
 :root{--bg:#f8f7fc;--p:#7c5ce7;--pg:#6b52d9;--a:#00d4aa;--t:#1e1b4b;--td:#7c7c98;--err:#ff4477;--warn:#f0a040}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -6452,16 +6452,14 @@ function vcToggle(head, rid) {
 }
 
 function vcPlayRid(rid) {
-  // 优先用 VOWEL_AUDIO 音素
+  if (!rid) return;
   if (window.VOWEL_AUDIO && window.VOWEL_AUDIO[rid]) {
     var a = new Audio(window.VOWEL_AUDIO[rid]);
     a.volume = 0.9;
-    a.play();
-  }
-  // 否则用浏览器 TTS 合成（适用于无音素的元音/单词）
-  else if (window.speechSynthesis) {
+    a.play().catch(function(){});
+  } else if (window.speechSynthesis) {
     window.speechSynthesis.cancel();
-    var u = new SpeechSynthesisUtterance(rid.replace(/_/g,' '));
+    var u = new SpeechSynthesisUtterance(rid.replace(/_/g, ' '));
     u.lang = 'en-US';
     u.rate = 0.85;
     u.volume = 0.9;
@@ -6469,13 +6467,28 @@ function vcPlayRid(rid) {
   }
 }
 function vcPlayWord(word) {
-  if (!window.speechSynthesis) return;
-  window.speechSynthesis.cancel();
-  var u = new SpeechSynthesisUtterance(word);
-  u.lang = 'en-US';
-  u.rate = 0.85;
-  u.volume = 0.9;
-  window.speechSynthesis.speak(u);
+  if (!word) return;
+  if (window.VOWEL_AUDIO && window.VOWEL_AUDIO[word]) {
+    var a = new Audio(window.VOWEL_AUDIO[word]);
+    a.volume = 0.9;
+    a.play().catch(function(){});
+    return;
+  }
+  if (window.PHONICS_WORD_AUDIO && window.PHONICS_WORD_AUDIO[word]) {
+    var b = new Audio(window.PHONICS_WORD_AUDIO[word]);
+    b.volume = 0.9;
+    b.play().catch(function(){});
+    return;
+  }
+  if (window.speechSynthesis) {
+    window.speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(word);
+    u.lang = 'en-US';
+    u.rate = 0.85;
+    u.volume = 0.9;
+    window.speechSynthesis.speak(u);
+    return;
+  }
 }
 
 </script>
