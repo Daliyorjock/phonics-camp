@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-  <meta name="version" content="v9.28">
+  <meta name="version" content="v9.19-471693">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-<title>DeepLingual · v9.28</title>
+<title>DeepLingual · v9.19-471693</title>
 <style>
 :root{--bg:#f8f7fc;--p:#7c5ce7;--pg:#6b52d9;--a:#00d4aa;--t:#1e1b4b;--td:#7c7c98;--err:#ff4477;--warn:#f0a040}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -6248,7 +6248,7 @@ function renderDashboard() {
   };
 
   // Stats row
-  document.getElementById('statsRow').innerHTML = "<div class=\"stat-badge fire\">\uD83D\uDD25 \u8FDE\u7EED ".concat(S.streak || 0, " \u5929</div>") + "<div class=\"stat-badge book\">\uD83D\uDCDA ".concat(mastered, "/").concat(totalPhrases, " \u638C\u63E1</div>") + "<div class=\"stat-badge phase-badge\">".concat(phaseLabels[activePhase] || activePhase, "</div>");
+  document.getElementById('statsRow').innerHTML = "<div class=\"stat-badge fire\">\uD83D\uDD25 \u8FDE\u7EED ".concat(S.streak || 0, " \u5929</div>") + "<div class=\"stat-badge book\">\uD83D\uDCDA ".concat(mastered, "/").concat(totalPhrases, " \u638C\u63E1</div>") + "<div class=\"stat-badge phase-badge\">".concat(phaseLabels[activePhase] || activePhase, "</div>") + "<div style=\"display:flex;gap:6px;margin-top:6px\"><span class=\"stat-badge\" onclick=\"toggleVowelChart()\" style=\"cursor:pointer;background:rgba(124,92,231,.1);color:var(--p)\">\uD83D\uDD0A \u5143\u97F3\u8868</span><a href=\"morphology.html\" class=\"stat-badge\" style=\"text-decoration:none;background:rgba(124,92,231,.1);color:var(--p)\">\uD83E\uDDE9 \u8BCD\u6839\u8BCD\u7F00</a></div>";
 
   // Today card
   var sugg = getTodaySuggestion();
@@ -6302,7 +6302,8 @@ function renderDashboard() {
   document.getElementById('outlineList').innerHTML = ol;
 }
 document.addEventListener('DOMContentLoaded', function () {
-  showPhonicsCamp();
+  if (location.hash === '#phrase') { showPhraseFlow(); }
+  else { showPhonicsCamp(); }
 });
 window.addEventListener('beforeunload', function (e) {
   if (playing) {
@@ -6313,7 +6314,7 @@ window.addEventListener('beforeunload', function (e) {
 window.addEventListener('pagehide', function () {
   if (playing) stop();
 });
-console.log('🎵 DeepLingual v9.28 · Phonics Boot Camp + Phrase Flow');
+console.log('🎵 DeepLingual v18 · Phonics Boot Camp + Phrase Flow');
 
 // ── Vowel Chart ──
 // ── Vowel Chart (select row + play button) ──
