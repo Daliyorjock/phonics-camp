@@ -409,7 +409,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','PingFang SC'
 
 
 
-.ph-fab-container{position:fixed;bottom:20px;right:20px;z-index:1000;display:flex;flex-direction:column;align-items:flex-end;touch-action:none;user-select:none;-webkit-user-select:none}.vowel-chart-fab{display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,#7c5ce7,#00d4aa);color:#fff;border:none;border-radius:24px;padding:12px 20px;font-size:14px;font-weight:700;cursor:grab;box-shadow:0 4px 20px rgba(124,92,231,.4);transition:transform .3s,box-shadow .3s;white-space:nowrap}.vowel-chart-fab:active{cursor:grabbing}.vowel-chart-fab.dragging{transform:scale(1.08);box-shadow:0 8px 30px rgba(124,92,231,.6);transition:none}.morph-fab{background:linear-gradient(135deg,#f0a040,#ee7752)}
+.ph-fab-container{position:fixed;bottom:20px;left:20px;z-index:1000;display:flex;flex-direction:column;align-items:flex-end;touch-action:none;user-select:none;-webkit-user-select:none}.vowel-chart-fab{display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,#7c5ce7,#00d4aa);color:#fff;border:none;border-radius:24px;padding:12px 20px;font-size:14px;font-weight:700;cursor:grab;box-shadow:0 4px 20px rgba(124,92,231,.4);transition:transform .3s,box-shadow .3s;white-space:nowrap}.vowel-chart-fab:active{cursor:grabbing}.vowel-chart-fab.dragging{transform:scale(1.08);box-shadow:0 8px 30px rgba(124,92,231,.6);transition:none}.morph-fab{background:linear-gradient(135deg,#f0a040,#ee7752)}
 .vowel-chart-fab:hover{transform:scale(1.05);box-shadow:0 6px 25px rgba(124,92,231,.5)}.morph-fab:hover{transform:scale(1.05);box-shadow:0 6px 25px rgba(240,160,64,.5)}
 
 
@@ -6473,7 +6473,7 @@ function vcPlayWord(word) {
     isDrag=true;hasMoved=false;
     startX=e.clientX;startY=e.clientY;
     var r=c.getBoundingClientRect();
-    startRight=window.innerWidth-r.right;
+    startLeft=r.left;
     startBottom=window.innerHeight-r.bottom;
     e.target.closest('.vowel-chart-fab').classList.add('dragging');
     c.setPointerCapture(e.pointerId);
@@ -6485,9 +6485,9 @@ function vcPlayWord(word) {
     var dx=e.clientX-startX,dy=e.clientY-startY;
     if(Math.abs(dx)>3||Math.abs(dy)>3)hasMoved=true;
     if(!hasMoved)return;
-    var nr=Math.max(0,Math.min(window.innerWidth-130,startRight-dx));
+    var nl=Math.max(0,Math.min(window.innerWidth-130,startLeft+dx));
     var nb=Math.max(0,Math.min(window.innerHeight-80,startBottom+dy));
-    c.style.right=nr+'px';
+    c.style.left=nl+'px';
     c.style.bottom=nb+'px';
   });
   
