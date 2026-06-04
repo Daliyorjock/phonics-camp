@@ -409,7 +409,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','PingFang SC'
 
 
 
-.ph-fab-container{position:fixed;bottom:20px;left:20px;z-index:1000;display:flex;flex-direction:column;align-items:flex-end;touch-action:none;user-select:none;-webkit-user-select:none}.vowel-chart-fab{display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,#7c5ce7,#00d4aa);color:#fff;border:none;border-radius:24px;padding:12px 20px;font-size:14px;font-weight:700;cursor:grab;box-shadow:0 4px 20px rgba(124,92,231,.4);transition:transform .3s,box-shadow .3s;white-space:nowrap}.vowel-chart-fab:active{cursor:grabbing}.vowel-chart-fab.dragging{transform:scale(1.08);box-shadow:0 8px 30px rgba(124,92,231,.6);transition:none}.morph-fab{background:linear-gradient(135deg,#f0a040,#ee7752)}
+.ph-fab-container{position:fixed;bottom:20px;left:0;z-index:1000;display:flex;flex-direction:column;align-items:flex-start;gap:4px;touch-action:none;user-select:none;-webkit-user-select:none}.vowel-chart-fab{display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,#7c5ce7,#00d4aa);color:#fff;border:none;border-radius:24px;padding:10px 16px;font-size:13px;font-weight:700;cursor:grab;box-shadow:0 4px 20px rgba(124,92,231,.4);transition:transform .3s,box-shadow .3s;white-space:nowrap}.vowel-chart-fab:active{cursor:grabbing}.vowel-chart-fab.dragging{transform:scale(1.08);box-shadow:0 8px 30px rgba(124,92,231,.6);transition:none}.morph-fab{background:linear-gradient(135deg,#f0a040,#ee7752)}
 .vowel-chart-fab:hover{transform:scale(1.05);box-shadow:0 6px 25px rgba(124,92,231,.5)}.morph-fab:hover{transform:scale(1.05);box-shadow:0 6px 25px rgba(240,160,64,.5)}
 
 
@@ -4750,9 +4750,9 @@ function renderRuleCard() {
       var pre = w.substring(0, idx),
         hl = w.substring(idx, idx + r.sym.length),
         post = w.substring(idx + r.sym.length);
-      return "<span class=\"word-chip\" onclick=\"playWordAudio('".concat(w, "')\">").concat(pre, "<span class=\"word-chip-hl\">").concat(hl, "</span>").concat(post, "</span><span class=\"word-cn\">" + (WORD_CN[w]||"") + "</span>");
+      return "<span class=\"word-chip\" onclick=\"playWordAudio('".concat(w, "')\">").concat(pre, "<span class=\"word-chip-hl\">").concat(hl, "</span>").concat(post, "</span>");
     }
-    return "<span class=\"word-chip\" onclick=\"playWordAudio('".concat(w, "')\">").concat(w, "</span><span class=\"word-cn\">" + (WORD_CN[w]||"") + "</span>");
+    return "<span class=\"word-chip\" onclick=\"playWordAudio('".concat(w, "')\">").concat(w, "</span>");
   }).join('');
   var dotsHtml = '';
   for (var i = 0; i < totalRules; i++) {
@@ -4847,6 +4847,7 @@ function playRuleSound(rid) {
     }
   }
 }
+var WORD_CN={"about":"关于","afraid":"害怕","again":"再次","age":"年龄","ago":"以前","air":"空气","all":"全部","apple":"苹果","arm":"手臂","around":"周围","author":"作者","autumn":"秋天","baby":"宝宝","badge":"徽章","bag":"包","ball":"球","banana":"香蕉","be":"是","beach":"海滩","bear":"熊","bed":"床","bee":"蜜蜂","beer":"啤酒","big":"大","bike":"自行车","bird":"鸟","birth":"出生","black":"黑色","blew":"吹(过)","blue":"蓝色","boat":"船","bone":"骨头","book":"书","born":"出生","bought":"买(过)","box":"盒子","brain":"大脑","bread":"面包","break":"打破","bridge":"桥","bright":"明亮","bring":"带来","brought":"带来(过)","brown":"棕色","brush":"刷","burn":"燃烧","bus":"公交","cage":"笼子","cake":"蛋糕","call":"呼叫","candy":"糖果","car":"汽车","care":"关心","career":"职业","cat":"猫","catch":"抓住","cent":"分","chair":"椅子","chat":"聊天","cheer":"欢呼","chess":"象棋","chew":"嚼","chicken":"鸡","chin":"下巴","chip":"薯片","church":"教堂","circle":"圆","city":"城市","claw":"爪","clear":"清楚","clue":"线索","coat":"外套","code":"代码","cook":"做饭","corn":"玉米","cow":"牛","crab":"螃蟹","crack":"裂缝","cream":"奶油","cross":"穿过","crown":"皇冠","cry":"哭","cube":"立方体","cup":"杯子","curl":"卷曲","cute":"可爱","cycle":"循环","dark":"黑暗","day":"天","deer":"鹿","desk":"书桌","dirt":"泥土","dish":"盘子","dog":"狗","dolphin":"海豚","donkey":"驴","dragon":"龙","draw":"画画","dream":"梦","dress":"裙子","drive":"开车","drop":"掉落","drum":"鼓","duck":"鸭子","ear":"耳朵","easy":"容易","eat":"吃","edge":"边缘","egg":"鸡蛋","elephant":"大象","email":"邮件","face":"脸","fail":"失败","fair":"公平","fall":"落下","far":"远","fault":"错误","fear":"害怕","fern":"蕨","few":"少","fight":"战斗","fire":"火","first":"第一","fish":"鱼","five":"五","food":"食物","for":"为","fork":"叉子","fought":"战斗(过)","fox":"狐狸","frame":"框架","free":"自由","friend":"朋友","frog":"青蛙","from":"从","fruit":"水果","funny":"有趣","fur":"毛皮","fuse":"保险丝","game":"游戏","garden":"花园","gate":"大门","gem":"宝石","germ":"细菌","giant":"巨人","girl":"女孩","glue":"胶水","goal":"目标","goat":"山羊","good":"好","grain":"谷物","grass":"草","gray":"灰色","great":"伟大","green":"绿色","group":"小组","grow":"生长","gym":"体育馆","hair":"头发","happy":"快乐","hat":"帽子","he":"他","head":"头","hear":"听见","her":"她的","high":"高","home":"家","honey":"蜂蜜","hope":"希望","horse":"马","hot":"热","huge":"巨大","ice":"冰","judge":"法官","key":"钥匙","kite":"风筝","knee":"膝盖","knew":"知道(过)","knife":"刀","knight":"骑士","knock":"敲","knot":"结","know":"知道","lake":"湖","latch":"门闩","launch":"发射","law":"法律","ledge":"窗台","leg":"腿","light":"光","like":"喜欢","log":"木头","look":"看","low":"低","lunch":"午餐","made":"做(过)","main":"主要","map":"地图","match":"匹配","may":"可以","me":"我","money":"钱","monkey":"猴子","moon":"月亮","more":"更多","mud":"泥","music":"音乐","mute":"静音","name":"名字","near":"附近","need":"需要","net":"网","new":"新","night":"夜晚","nine":"九","nose":"鼻子","note":"笔记","nurse":"护士","nut":"坚果","oil":"油","page":"页","pair":"一对","panda":"熊猫","park":"公园","patch":"补丁","pause":"暂停","paw":"爪子","peer":"同伴","pen":"笔","perfect":"完美","person":"人","phone":"电话","photo":"照片","pig":"猪","play":"玩","please":"请","pot":"锅","present":"现在","press":"按","pretty":"漂亮","price":"价格","print":"打印","prize":"奖品","problem":"问题","proud":"骄傲","puppy":"小狗","purple":"紫色","race":"比赛","rain":"雨","read":"读","red":"红","rescue":"救援","ride":"骑","ridge":"山脊","right":"右","road":"路","room":"房间","rope":"绳子","rose":"玫瑰","run":"跑","sad":"悲伤","same":"相同","sauce":"酱","saw":"锯","say":"说","school":"学校","scratch":"抓","see":"看见","she":"她","ship":"船","shirt":"衬衫","shop":"商店","short":"短","show":"展示","six":"六","sleep":"睡觉","slow":"慢","small":"小","snow":"雪","sofa":"沙发","sought":"寻找(过)","stair":"楼梯","star":"星星","stay":"停留","steer":"驾驶","stew":"炖菜","storm":"暴风雨","straw":"稻草","sun":"太阳","sunny":"晴","surf":"冲浪","tall":"高","tea":"茶","term":"学期","that":"那个","them":"他们","thin":"薄","think":"思考","thirty":"三十","this":"这个","thought":"想法","three":"三","time":"时间","toast":"吐司","tooth":"牙齿","top":"顶部","train":"火车","tree":"树","trip":"旅行","trophy":"奖杯","truck":"卡车","true":"真","try":"尝试","tube":"管子","turn":"转动","use":"使用","valley":"山谷","value":"价值","verb":"动词","visit":"参观","wait":"等待","wall":"墙","watch":"手表","way":"路","we":"我们","whale":"鲸鱼","what":"什么","wheel":"轮子","when":"何时","where":"哪里","which":"哪个","white":"白色","win":"赢","wish":"愿望","wrap":"包裹","wreck":"残骸","wrench":"扳手","wrist":"手腕","write":"写","wrong":"错","year":"年","yellow":"黄色"};
 var _curAudio = null;
 function playWordAudio(word) {
   var b64 = PHONICS_WORD_AUDIO && PHONICS_WORD_AUDIO[word];
@@ -4869,11 +4870,15 @@ function playWordAudio(word) {
         c.classList.add('playing');
         var _toast=document.getElementById('wordToast');
         if(!_toast){_toast=document.createElement('div');_toast.id='wordToast';
-        _toast.style.cssText='position:fixed;bottom:130px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.85);color:#fff;padding:10px 24px;border-radius:12px;font-size:17px;z-index:9999;pointer-events:none;transition:opacity .3s';
+        _toast.style.cssText='position:fixed;background:linear-gradient(135deg,#8b7ec8,#b5a8d4);color:#fff;padding:6px 16px;border-radius:10px;font-size:14px;z-index:9999;pointer-events:none;transition:opacity .2s;white-space:nowrap;box-shadow:0 2px 12px rgba(124,92,231,.35)';
         document.body.appendChild(_toast);}
         var cn=WORD_CN[word];
-        if(cn){_toast.textContent=word+' — '+cn;_toast.style.opacity='1';
-        setTimeout(function(){_toast.style.opacity='0';},1500);}
+        if(cn){var rect=c.getBoundingClientRect();
+        _toast.textContent=cn;
+        _toast.style.left=Math.max(10,Math.min(window.innerWidth-120,rect.left+rect.width/2-_toast.offsetWidth/2))+'px';
+        _toast.style.top=(rect.bottom+6)+'px';
+        _toast.style.opacity='1';
+        setTimeout(function(){_toast.style.opacity='0';},1800);}
         setTimeout(function () {
           return c.classList.remove('playing');
         }, 600);
@@ -6328,7 +6333,8 @@ function toggleVowelChart() {
 }
 function toggleMorphList() {
   var o = document.getElementById('morphOverlay');
-  if (o) { o.classList.add('open'); }
+  if (o) { o.classList.add('open');
+      var appR2=document.getElementById('app');if(appR2){o.style.left=appR2.getBoundingClientRect().left+'px';} }
 }
 function closeMorphList() {
   var o = document.getElementById('morphOverlay');
@@ -6515,8 +6521,8 @@ function vcPlayWord(word) {
 
 
 <div class="ph-fab-container" id="phFabContainer">
-  <button class="vowel-chart-fab" onclick="toggleVowelChart()" title="元音对照表" style="margin-bottom:4px">🔤 元音表</button>
-  <button class="vowel-chart-fab morph-fab" onclick="toggleMorphList()" title="词根词缀速查表" style="margin-bottom:4px">📚 词根词缀速查表</button>
+  <button class="vowel-chart-fab" onclick="toggleVowelChart()" title="元音对照表">🔤 元音表</button>
+  <button class="vowel-chart-fab morph-fab" onclick="toggleMorphList()" title="词根词缀速查表">📚 词根词缀速查表</button>
 </div>
 <div class="vowel-chart-overlay" id="vowelChartOverlay" onclick="if(event.target===this)closeVowelChart()">
   <div class="vc-card">
