@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-  <meta name="version" content="v9.19-471693">
+  <meta name="version" content="v9.28">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-<title>DeepLingual · v9.19-471693</title>
+<title>DeepLingual · v9.28</title>
 <style>
 :root{--bg:#f8f7fc;--p:#7c5ce7;--pg:#6b52d9;--a:#00d4aa;--t:#1e1b4b;--td:#7c7c98;--err:#ff4477;--warn:#f0a040}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -4750,9 +4750,9 @@ function renderRuleCard() {
       var pre = w.substring(0, idx),
         hl = w.substring(idx, idx + r.sym.length),
         post = w.substring(idx + r.sym.length);
-      return "<span class=\"word-chip\" onclick=\"playWordAudio('".concat(w, "')\">").concat(pre, "<span class=\"word-chip-hl\">").concat(hl, "</span>").concat(post, "</span>");
+      return "<span class=\"word-chip\" onclick=\"playWordAudio('".concat(w, "')\">").concat(pre, "<span class=\"word-chip-hl\">").concat(hl, "</span>").concat(post, "</span><span class=\"word-cn\">" + (WORD_CN[w]||"") + "</span>");
     }
-    return "<span class=\"word-chip\" onclick=\"playWordAudio('".concat(w, "')\">").concat(w, "</span>");
+    return "<span class=\"word-chip\" onclick=\"playWordAudio('".concat(w, "')\">").concat(w, "</span><span class=\"word-cn\">" + (WORD_CN[w]||"") + "</span>");
   }).join('');
   var dotsHtml = '';
   for (var i = 0; i < totalRules; i++) {
@@ -4867,6 +4867,13 @@ function playWordAudio(word) {
     document.querySelectorAll('.word-chip').forEach(function (c) {
       if (c.textContent === word) {
         c.classList.add('playing');
+        var _toast=document.getElementById('wordToast');
+        if(!_toast){_toast=document.createElement('div');_toast.id='wordToast';
+        _toast.style.cssText='position:fixed;bottom:130px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.85);color:#fff;padding:10px 24px;border-radius:12px;font-size:17px;z-index:9999;pointer-events:none;transition:opacity .3s';
+        document.body.appendChild(_toast);}
+        var cn=WORD_CN[word];
+        if(cn){_toast.textContent=word+' — '+cn;_toast.style.opacity='1';
+        setTimeout(function(){_toast.style.opacity='0';},1500);}
         setTimeout(function () {
           return c.classList.remove('playing');
         }, 600);
