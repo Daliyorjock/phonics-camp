@@ -62,6 +62,12 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,san
 .back-link{display:block;text-align:center;padding:8px;font-size:12px;color:#aaa;text-decoration:none;margin-bottom:16px}
 .back-link:hover{color:#7c5ce7}
 .empty-msg{text-align:center;color:#bbb;padding:40px 16px;font-size:14px}
+
+.search-bar{max-width:580px;margin:0 auto 8px;padding:0;display:flex;gap:0}
+.search-bar input{flex:1;padding:12px 16px;border:2px solid #e0e0e0;border-radius:12px;font-size:14px;outline:none;background:#fff;color:#333;transition:border-color .2s}
+.search-bar input:focus{border-color:#7c5ce7}
+.search-bar input::placeholder{color:#bbb}
+
 </style>
 </head>
 <body>
@@ -73,6 +79,8 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,san
 <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
 <div class="progress-num" id="progressNum">0/0</div>
 </div>
+
+<div class="search-bar"><input type="text" id="searchInput" placeholder="🔍 搜索词缀、含义或示例词..." oninput="doSearch()"></div>
 <div class="tab-bar">
 <button class="tab-btn active" onclick="switchTab('prefix')">🔹 前缀<span class="tab-count"></span></button>
 <button class="tab-btn" onclick="switchTab('suffix')">🔸 后缀<span class="tab-count"></span></button>
@@ -142,6 +150,7 @@ function updateScore(){
 
 function switchTab(type){
   currentTab=type;
+  document.getElementById('searchInput').value='';
   document.querySelectorAll('.tab-btn').forEach(function(b,i){
     var t=b.textContent.trim();
     b.classList.toggle('active',
@@ -151,9 +160,14 @@ function switchTab(type){
   updateScore();
 }
 
-function renderUnits(){
+function renderUnits(dataArg){
   var list=document.getElementById('unitList');
-  var data=MORPHEMES.filter(function(m){return m.type===currentTab;});
+  var data;
+  if(dataArg){
+    data=dataArg;
+  }else{
+    data=MORPHEMES.filter(function(m){return m.type===currentTab;});
+  }
   var typeIcon={prefix:'🔹',suffix:'🔸',root:'🔶'};
   var typeColor={prefix:'prefix',suffix:'suffix',root:'root'};
   var html='';
@@ -208,6 +222,33 @@ function renderUnits(){
   });
 }
 
+
+function doSearch(){
+  var q=document.getElementById('searchInput').value.trim().toLowerCase();
+  if(!q){
+    // No query: show current tab
+    document.querySelectorAll('.tab-btn').forEach(function(b,i){
+      var t=b.textContent.trim();
+      b.classList.toggle('active',(i===0&&currentTab==='prefix')||(i===1&&currentTab==='suffix')||(i===2&&currentTab==='root'));
+    });
+    renderUnits();
+    updateScore();
+    return;
+  }
+  // Search all morphemes regardless of tab
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
+  var results=MORPHEMES.filter(function(m){
+    var matchForm=m.form.toLowerCase().indexOf(q)>=0;
+    var matchMeaning=m.meaning.toLowerCase().indexOf(q)>=0;
+    var matchDesc=m.desc.toLowerCase().indexOf(q)>=0;
+    var matchWords=m.words.some(function(w){return w.toLowerCase().indexOf(q)>=0;});
+    var matchSentences=m.sentences.some(function(s){return s[0].toLowerCase().indexOf(q)>=0;});
+    return matchForm||matchMeaning||matchDesc||matchWords||matchSentences;
+  });
+  document.getElementById('progressNum').textContent=results.length+'个';
+  document.getElementById('progressFill').style.width='0%';
+  renderUnits(results);
+}
 function escHtml(s){
   return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
